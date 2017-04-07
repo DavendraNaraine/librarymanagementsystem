@@ -1,6 +1,6 @@
 <?php
 
-class bookModel extends CI_Model{
+class Book_model extends CI_Model{
 
   var $id; 
   var $subject; 
