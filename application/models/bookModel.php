@@ -2,6 +2,7 @@
 
 class bookModel extends CI_Model{
 
+  var $id; 
   var $subject; 
   var $title;
   var $author;
