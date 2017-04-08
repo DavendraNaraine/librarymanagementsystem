@@ -28,5 +28,13 @@ class User_model extends CI_Model{
   function deleteUser(){
     
   }
+  
+  function login(){
+    
+  }
+  
+  function logout(){
+    
+  }
 }
 ?>
