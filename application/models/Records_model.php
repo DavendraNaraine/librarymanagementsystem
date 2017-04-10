@@ -1,6 +1,6 @@
 <?php
 
-class Record_model extends CI_Model{
+class Records_model extends CI_Model{
   
   function backupRecord(){
     

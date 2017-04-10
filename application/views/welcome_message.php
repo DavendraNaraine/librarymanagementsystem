@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
 		
 		<p>
-			<button type="button" class="btn btn-success"</button>Book</button>
+			<button onclick="location.href='<?php echo base_url();?>Book/index'">Potato</button>
 		</p>		
 	</div>
 
