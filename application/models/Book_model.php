@@ -13,6 +13,11 @@ class Book_model extends CI_Model{
   var $isbn;
   var $noOfBooks; 
   var $active;
+  
+  var $borrowDate;
+  var $intendedReturnDate;
+  var $actualReturnDate;
+  var $borrowed;
 
   function __construct(){
     parent::__construct();
