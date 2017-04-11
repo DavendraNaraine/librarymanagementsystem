@@ -6,7 +6,9 @@ class User extends CI_Controller{
   public function index(){
     $this->load->database();
     $this->load->model('user_model');
-    $this->load->view('user');
+    $this->load->view('main/header');
+    $this->load->view('main/user');
+    $this->load->view('main/footer');
     
     $this->output->enable_profiler(TRUE);
   }
