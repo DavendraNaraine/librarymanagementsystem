@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '429zX|y.6e{}',
-	'database' => 'lmsdb',
+	'hostname' => $_SERVER['LMS_DB_HOSTNAME'],
+	'username' => $_SERVER['LMS_DB_USER'],
+	'password' => $_SERVER['LMS_DB_PASS'],
+	'database' => $_SERVER['LMS_DB'],
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
