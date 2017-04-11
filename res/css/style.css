@@ -1,0 +1,54 @@
+html {
+  background: url(../images/books-bg.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  background-color: transparent;
+}
+
+
+
+/*Modal ------------------*/
+.modal-content{
+  background-color: #588c7e;
+}
+
+.btn-link{
+  color:white;
+}
+
+.modal-heading h2, .modal-heading h5, .add .form-group label{
+  color:#ffffff;
+}
+.modal-heading h5 {
+  font-size: 16px;
+}
+
+.add .form-group label{
+  font-size: 15px;
+}
+
+.modal-heading img {
+  display: block;
+  margin: auto;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 5px;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #588c7e;
+}
+
+.footer-text {
+  color:#ffffff;
+  font-size: 18px;
+}
