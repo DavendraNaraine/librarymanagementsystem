@@ -31,6 +31,18 @@ class Books_model extends CI_Model{
     
   }
   
+  function viewBookByName(){
+    
+  }
+  
+  function viewBookByAuthor(){
+    
+  }
+  
+  function viewBookBySubject(){
+    
+  }
+  
   function updateBook(){
     
   }
