@@ -21,7 +21,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><img src="../images/ug-logo.png" alt="ug-logo" style="max-width:60%; margin-top: -7px; margin-bottom: -7px;"></a>
+            <a class="navbar-brand" href="#"><img src="<?=$this->config->base_url()?>res/images/ug-logo.png" alt="ug-logo" style="max-width:60%; margin-top: -7px; margin-bottom: -7px;"></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
