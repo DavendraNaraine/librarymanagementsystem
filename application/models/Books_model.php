@@ -14,12 +14,10 @@ class Books_model extends CI_Model{
       'coAuthor' => $this->input->post('coAuthor');
       'publisher' => $this->input->post('publisher');
       'edition' => $this->input->post('edition');
-      'pages' => $this->input->post('pages');
       'isbn' => $this->input->post('isbn'); 
-      'copies' => $this->input->post('copies');
     );
     
-    $this->db->insert('books', $data);
+    $this->db->insert('titles', $data);
   }
   
   function viewBook(){

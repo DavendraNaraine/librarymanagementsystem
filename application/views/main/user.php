@@ -10,31 +10,31 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Username</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="" placeholder="Enter Username">
+                        <input type="text" class="form-control" id="username" placeholder="Enter Username">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="" placeholder="Enter Password">
+                        <input type="password" class="form-control" id="password" placeholder="Enter Password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Re-type Password</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="" placeholder="Re-type Password">
+                        <input type="password" class="form-control" id="repassword" placeholder="Re-type Password">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">First Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="" placeholder="Enter First Name">
+                        <input type="text" class="form-control" id="firstname" placeholder="Enter First Name">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="">Last Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter Last Name">
                     </div>
                 </div>
                 <div class="form-group text-center">
