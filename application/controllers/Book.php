@@ -5,7 +5,7 @@ class Book extends CI_Controller{
   
   public function index(){
     $this->load->database();
-    $this->load->model('book_model');
+    $this->load->model('books_model');
     $this->load->view('main/header');
     $this->load->view('main/book');
     $this->load->view('main/footer');

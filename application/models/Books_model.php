@@ -2,29 +2,24 @@
 
 class Books_model extends CI_Model{
 
-  var $id; 
-  var $subject; 
-  var $title;
-  var $author;
-  var $coAuthor;
-  var $publisher;
-  var $edition;
-  var $page;
-  var $isbn;
-  var $noOfBooks; 
-  var $active;
-  
-  var $borrowDate;
-  var $intendedReturnDate;
-  var $actualReturnDate;
-  var $borrowed;
-
   function __construct(){
     parent::__construct();
   }
   
-  function addBook(){
+  function addBook(){    
+    $data = array(
+      'subject' => $this->input->post('subject');
+      'title' => $this->input->post('title');
+      'author' => $this->input->post('author');
+      'coAuthor' => $this->input->post('coAuthor');
+      'publisher' => $this->input->post('publisher');
+      'edition' => $this->input->post('edition');
+      'pages' => $this->input->post('pages');
+      'isbn' => $this->input->post('isbn'); 
+      'copies' => $this->input->post('copies');
+    );
     
+    $this->db->insert('books', $data);
   }
   
   function viewBook(){
