@@ -17,7 +17,7 @@ class Books_model extends CI_Model{
       'isbn' => $this->input->post('isbn'); 
     );
     
-    $this->db->insert('titles', $data);
+    $this->db->insert('books', $data);
   }
   
   function viewBook(){

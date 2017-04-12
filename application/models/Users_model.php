@@ -23,10 +23,6 @@ class Users_model extends CI_Model{
     
   }
   
-  function viewUserByName(){
-    
-  }
-  
   function updateUser(){
     
   }

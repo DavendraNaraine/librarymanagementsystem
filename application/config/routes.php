@@ -17,3 +17,7 @@ $route['v1/users/(:num)']['put'] = "v1/users/update_user/$1";
 $route['v1/users']['post'] = "v1/users/create_user/$1";
 $route['v1/users/(:num)']['delete'] = "v1/users/delete_user/$1";
 
+$route['v1/subjects/(:num)']['get'] = "v1/subjects/get_subject/$1";
+$route['v1/subjects']['get'] = "v1/subjects/list_subjects";
+$route['v1/subjects/(:num)']['put'] = "v1/subjects/update_subject/$1";
+$route['v1/subjects']['post'] = "v1/subjects/create_subject";
