@@ -8,16 +8,17 @@ class Books_model extends CI_Model{
   
   function addBook(){    
     $data = array(
-      'subject' => $this->input->post('subject');
-      'title' => $this->input->post('title');
-      'author' => $this->input->post('author');
-      'coAuthor' => $this->input->post('coAuthor');
-      'publisher' => $this->input->post('publisher');
+      'title_name' => $this->input->post('title');
+      'title_author' => $this->input->post('author');
+      'title_coauthor' => $this->input->post('coAuthor');
+      'title_edition' => $this->input->post('edition');
+      'title_publisher' => $this->input->post('publisher');
       'edition' => $this->input->post('edition');
-      'isbn' => $this->input->post('isbn'); 
+      'title_isbn' => $this->input->post('isbn'); 
+      'title_copies' => $this->input->post('copies'); 
     );
     
-    $this->db->insert('books', $data);
+    $this->db->insert('titles', $data);
   }
   
   function viewBook(){
