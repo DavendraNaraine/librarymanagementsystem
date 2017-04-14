@@ -51,10 +51,8 @@
               </li>
             </ul>
             <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+               <!--Search Book goes here-->
+                <?php $this->load->view('main/search-book');?>
             </form>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#">Logout</a></li>
