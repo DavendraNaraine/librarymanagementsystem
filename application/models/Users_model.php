@@ -26,6 +26,7 @@ class Users_model extends CI_Model{
     }
     else{
       $this->db->insert('users', $data);
+      return 'User added';
     }
   }
   

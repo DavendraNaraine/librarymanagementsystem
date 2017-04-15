@@ -19,8 +19,11 @@ class Subjects extends CI_Controller{
   }
   
   public function create_subject(){
-    echo "create di subject";
-    //$this->output->enable_profiler(TRUE);
+    $this->load->database();
+    $this->load->model('subjects_model');
+    $data['response'] = $this->subjects_model->addSubject();
+    
+    $this->load->view('api/api_view' , $data);
   } 
 }
 ?>
