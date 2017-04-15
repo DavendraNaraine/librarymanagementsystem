@@ -30,7 +30,28 @@ class Users_model extends CI_Model{
     }
   }
   
-  function viewUsers(){
+  function getUser($user_id){
+    $active = 1; 
+    
+    $data = array(
+      'user_id' => $user_id,
+      'active' => $active
+    );
+    
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where($data);
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'User does not exist';
+    }
+  }
+  
+  function listUsers(){
     $active = 1; 
     
     $this->db->select('*');

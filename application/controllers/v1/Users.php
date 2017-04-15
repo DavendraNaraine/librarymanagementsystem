@@ -3,14 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller{
   
-  public function get_user(){
+  public function get_user($user_id){
+    $this->load->database();
+    $this->load->model('users_model');
+    $data['response'] = $this->users_model->getUser($user_id);
     
+    $this->load->view('api/api_view', $data);
   } 
   
   public function list_users(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->viewUsers();
+    $data['response'] = $this->users_model->listUsers();
     
     $this->load->view('api/api_view', $data);
   }
