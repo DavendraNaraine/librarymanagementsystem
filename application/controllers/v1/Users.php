@@ -8,7 +8,11 @@ class Users extends CI_Controller{
   } 
   
   public function list_users(){
+    $this->load->database();
+    $this->load->model('users_model');
+    $data['response'] = $this->users_model->viewUsers();
     
+    $this->load->view('api/api_view', $data);
   }
   
   public function update_user(){

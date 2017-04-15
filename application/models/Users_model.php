@@ -30,8 +30,17 @@ class Users_model extends CI_Model{
     }
   }
   
-  function viewUser(){
+  function viewUsers(){
+    $active = 1; 
     
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where('active', $active);
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
   }
   
   function updateUser(){
