@@ -38,8 +38,15 @@ class Users_model extends CI_Model{
     
   }
   
-  function deleteUser(){
+  function deleteUser($user_id){
+    $data = array(
+      'active' => 0
+    );
     
+    $this->db->where('user_id', $user_id);
+    $this->db->update('users', $data);
+    
+    return $user_id;
   }
   
   function login(){
