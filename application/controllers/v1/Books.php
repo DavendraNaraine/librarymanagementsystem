@@ -19,8 +19,11 @@ class Books extends CI_Controller{
   }
   
   public function create_book(){
-    echo "create di book";
-    //$this->output->enable_profiler(TRUE);
+    $this->load->database();
+    $this->load->model('books_model');
+    $data['response'] = $this->books_model->addBook();
+    
+    $this->load->view('api/api_view', $data);
   }
   
   public function delete_book(){
