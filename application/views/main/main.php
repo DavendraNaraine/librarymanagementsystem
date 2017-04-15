@@ -2,7 +2,7 @@
      <div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-heading">
-        <img src="images/ug-logo.png" alt="ug-logo">
+        <img src="<?=$this->config->base_url()?>res/images/ug-logo.png" alt="ug-logo">
 				<h2 class="text-center">Login</h2>
 			</div>
 			<hr/>
