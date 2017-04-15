@@ -19,8 +19,11 @@ class Users extends CI_Controller{
   }
   
   public function create_user(){
-    echo "create di user";
-    //$this->output->enable_profiler(TRUE);
+    $this->load->database();
+    $this->load->model('users_model');
+    $data['response'] = $this->users_model->addUser();
+    
+    $this->load->view('api/api_view', $data);
   }
   
   public function delete_user(){
