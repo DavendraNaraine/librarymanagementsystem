@@ -40,7 +40,16 @@ class Subjects_model extends CI_model{
   }
   
   function listSubjects(){
+    $this->db->select('*');
+    $this->db->from('subjects');
+    $query = $this->db->get();
     
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'Error loading list';
+    }
   }
   
   function updateSubject(){

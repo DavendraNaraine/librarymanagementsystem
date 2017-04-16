@@ -12,7 +12,11 @@ class Subjects extends CI_Controller{
   } 
   
   public function list_subjects(){
+    $this->load->database();
+    $this->load->model('subjects_model');
+    $data['response'] = $this->subjects_model->listSubjects();
     
+    $this->load->view('api/api_view', $data);
   }
   
   public function update_subject(){
