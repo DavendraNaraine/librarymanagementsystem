@@ -64,8 +64,8 @@ class Users_model extends CI_Model{
     }
   }
   
-  function updateUser(){
-    
+  function updateUser($user_id, $payload){
+
   }
   
   function deleteUser($user_id){

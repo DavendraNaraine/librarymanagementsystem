@@ -3,19 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Subjects extends CI_Controller{
   
-  public function get_subject(){
-    echo "get di subject";
-    //$this->output->enable_profiler(TRUE);
+  public function get_subject($subject_id){
+    $this->load->database();
+    $this->load->model('subjects_model');
+    $data['response'] = $this->subjects_model->getSubject($subject_id);
+    
+    $this->load->view('api/api_view', $data);
   } 
   
   public function list_subjects(){
-    echo "list di subject";
-    //$this->output->enable_profiler(TRUE);
+    
   }
   
   public function update_subject(){
-    echo "update di subject";
-    //$this->output->enable_profiler(TRUE);
+    
   }
   
   public function create_subject(){

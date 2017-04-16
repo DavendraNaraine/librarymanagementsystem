@@ -19,8 +19,8 @@ class Users extends CI_Controller{
     $this->load->view('api/api_view', $data);
   }
   
-  public function update_user(){
-    
+  public function update_user($user_id){
+   
   }
   
   public function create_user(){
