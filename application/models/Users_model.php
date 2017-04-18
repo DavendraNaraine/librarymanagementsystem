@@ -32,7 +32,6 @@ class Users_model extends CI_Model{
   
   function getUser($user_id){
     $active = 1; 
-    
     $data = array(
       'user_id' => $user_id,
       'active' => $active
@@ -67,22 +66,38 @@ class Users_model extends CI_Model{
     }
   }
   
+  function searchUser(){
+
+  }
+  
   function updateUser($user_id, $payload){
 
   }
   
   function deleteUser($user_id){
+    $update = array ('active' => 0);
+    
     $data = array(
-      'active' => 0
+      'user_id' =>$user_id,
+      'active' => 1
     );
     
-    $this->db->where('user_id', $user_id);
-    $this->db->update('users', $data);
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where($data);
+    $query = $this->db->get();
     
-    return $user_id;
+    if($query->num_rows() > 0){
+      $this->db->where('user_id', $user_id);
+      $this->db->update('users', $update);
+      return $user_id;
+    }
+    else{
+      return 'User does not exist';
+    }
   }
   
-  function login(){
+  function loginUser(){
     
   }
   

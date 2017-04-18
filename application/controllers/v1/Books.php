@@ -21,7 +21,7 @@ class Books extends CI_Controller{
   public function create_book(){
     $this->load->database();
     $this->load->model('books_model');
-    $data['response'] = $this->books_model->addBook();
+    $data['response'] = $this->books_model->addTitle();
     
     $this->load->view('api/api_view', $data);
   }

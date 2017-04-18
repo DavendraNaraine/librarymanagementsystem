@@ -6,14 +6,13 @@ class Books_model extends CI_Model{
     parent::__construct();
   }
   
-  function addBook(){    
+  function addTitle(){    
     $data = array(
       'title_name' => $this->input->post('title'),
       'title_author' => $this->input->post('author'),
       'title_coauthor' => $this->input->post('coAuthor'),
       'title_edition' => $this->input->post('edition'),
       'title_publisher' => $this->input->post('publisher'),
-      'title_edition' => $this->input->post('edition'),
       'title_isbn' => $this->input->post('isbn'),
       'title_copies' => $this->input->post('copies') 
     );
@@ -28,13 +27,20 @@ class Books_model extends CI_Model{
     }
     else{
       $this->db->insert('titles', $data); 
-      return 'Book added';
+      $insert_id = $this->db->insert_id();    
+      return $insert_id;
+
     }  
   }
   
-  function viewBook(){
+  function getBook(){
     
   }
+  
+  function listBooks(){
+    
+  }
+  
   
   function updateBook(){
     
