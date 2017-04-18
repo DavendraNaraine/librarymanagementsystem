@@ -98,7 +98,23 @@ class Users_model extends CI_Model{
   }
   
   function loginUser(){
+    $data = array(
+      'username' => $this->input->post('username'),
+      'password' => $this->input->post('password'),
+      'active' => 1
+    );
     
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where($data);
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      return 'login';
+    }
+    else{
+      return 'Error login in';
+    }
   }
   
   function logout(){
