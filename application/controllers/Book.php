@@ -7,10 +7,11 @@ class Book extends CI_Controller{
     $this->load->database();
     $this->load->model('books_model');
     $this->load->view('main/header');
+    $this->load->view('main/navbar');
     $this->load->view('main/book');
     $this->load->view('main/footer');
     
-    $this->output->enable_profiler(TRUE);
+    //$this->output->enable_profiler(TRUE);
   }
 }
 ?>

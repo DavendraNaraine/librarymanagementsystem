@@ -10,7 +10,7 @@ class Subject extends CI_Controller{
     $this->load-view('main/subject');
     $this->load-view('main/footer');
     
-    $this->output->enable_profiler(TRUE);
+    //$this->output->enable_profiler(TRUE);
   }
 }
 ?>

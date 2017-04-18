@@ -1,17 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller{
+class Title extends CI_Controller{
   
   public function index(){
     $this->load->database();
-    $this->load->model('users_model');
+    $this->load->model('titles_model');
     $this->load->view('main/header');
     $this->load->view('main/navbar');
-    $this->load->view('main/user');
+    $this->load->view('main/title');
     $this->load->view('main/footer');
     
-  //  $this->output->enable_profiler(TRUE);
+    //$this->output->enable_profiler(TRUE);
   }
 }
 ?>
