@@ -19,18 +19,12 @@
                     </li>
                     <li><a href="<?=$this->config->base_url()?>index.php/user">Users</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Loan <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?=$this->config->base_url()?>index.php/borrow">Borrow Books</a></li>
-                            <li><a href="<?=$this->config->base_url()?>index.php/return">Return Books</a></li>
-                        </ul>
+                      <li><a href="<?=$this->config->base_url()?>index.php/borrow">Borrow Books</a>
+                    </li>
+                    <li><a href="<?=$this->config->base_url()?>index.php/return">Return Books</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left">
-                    <!--Search Book goes here-->
-                    <?php $this->load->view('main/search-book');?>
-                </form>
+                
                 <ul class="nav navbar-nav navbar-right">
 
                     <li>Welcome User,...<span><a href="#">Logout</a></span></li>
