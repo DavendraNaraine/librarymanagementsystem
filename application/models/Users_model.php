@@ -67,7 +67,45 @@ class Users_model extends CI_Model{
   }
   
   function searchUser(){
-
+    $username = null;
+    $firstname = null;
+    $lastname = null;
+    $student_usi = null;
+    $active = 1; 
+    
+    $username = $this->input->post('username');
+    $firstname = $this->input->post('firstname');
+    $lastname = $this->input->post('lastname');
+    $student_usi = $this->input->post('student_usi');
+    
+    $this->db->select('*');
+    $this->db->from('users');
+    
+    if($username != null){
+      $this->db->where('username', $username);
+      $this->db->where('active', $active);
+    }
+    elseif($firstname != null){
+      $this->db->where('first_name', $firstname);
+      $this->db->where('active', $active);
+    }
+    elseif($lastname != null){
+      $this->db->where('last_name', $lastname);
+      $this->db->where('active', $active);
+    }
+    else{
+      $this->db->where('student_usi', $student_usi);
+      $this->db->where('active', $active);
+    }
+    
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'User not found';
+    }
   }
   
   function updateUser($user_id, $payload){
@@ -110,14 +148,14 @@ class Users_model extends CI_Model{
     $query = $this->db->get();
     
     if($query->num_rows() > 0){
-      return 'login';
+      return 'login';//return a session and the users' type
     }
     else{
       return 'Error login in';
     }
   }
   
-  function logout(){
+  function logoutUser(){
     
   }
 }
