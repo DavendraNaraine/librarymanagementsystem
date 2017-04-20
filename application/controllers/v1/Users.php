@@ -28,7 +28,11 @@ class Users extends CI_Controller{
   }
   
   public function update_user($user_id){
-   
+    $this->load->database();
+    $this->load->model('users_model');
+    $data['response'] = $this->users_model->updateUser($user_id);
+    
+    $this->load->view('api/api_view', $data);
   }
   
   public function create_user(){
