@@ -24,7 +24,7 @@ $route['v1/users']['post'] = "v1/users/create_user/$1";
 $route['v1/users/(:num)']['patch'] = "v1/users/delete_user/$1";
 $route['v1/users/search']['post'] = "v1/users/searchUserBy";
 $route['v1/users/login']['post'] = "v1/users/login";
-$route['v1/users/logout']['post'] = "v1/users/logout";
+$route['v1/users/logout']['post'] = "v1/users/logout";///check
 
 $route['v1/subjects/(:num)']['get'] = "v1/subjects/get_subject/$1";
 $route['v1/subjects']['get'] = "v1/subjects/list_subjects";

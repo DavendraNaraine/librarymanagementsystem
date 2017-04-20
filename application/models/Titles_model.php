@@ -7,7 +7,17 @@ class Titles_model extends CI_Model{
   }
   
   function getTitle($title_id){
+    $this->db->select('*');
+    $this->db->from('titles');
+    $this->db->where('title_id', $title_id);
+    $query = $this->db->get();
     
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'Title does not exist';
+    }
   }
   
   function listTitle(){

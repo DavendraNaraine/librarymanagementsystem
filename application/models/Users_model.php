@@ -109,38 +109,7 @@ class Users_model extends CI_Model{
   }
   
   function updateUser($user_id){
-    $username = NULL;
-    $firstname = NULL;
-    $lastname = NULL;
-    $student_usi = NULL;
-    $role = NULL;
-    
-    $update = array (
-      'username' => $username,
-      'first_name' => $firstname,
-      'last_name' => $lastname,
-      'student_usi' => $student_usi,
-      'role' => $role
-    );
-    
-    $data = array(
-      'user_id' => $user_id,
-      'active' => 1
-    );
-    
-    $this->db->select('*');
-    $this->db->from('users');
-    $this->db->where($data);
-    $query = $this->db->get();
-    
-    if($query->num_rows() > 0){
-      $this->db->where('user_id', $user_id);
-      $this->db->update('users', $update);
-      return $user_id;
-    }
-    else{
-      return 'Invalid update';
-    }
+
   }
   
   function deleteUser($user_id){

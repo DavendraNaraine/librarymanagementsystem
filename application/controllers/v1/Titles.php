@@ -6,7 +6,7 @@ class Titles extends CI_Controller{
   public function get_title($title_id){
     $this->load->database();
     $this->load->model('titles_model');
-    $data['response'] = $this->titles_model->getTitle();
+    $data['response'] = $this->titles_model->getTitle($title_id);
     
     $this->load->view('api/api_view', $data);
   } 
@@ -22,7 +22,7 @@ class Titles extends CI_Controller{
   public function update_title($title_id){
     $this->load->database();
     $this->load->model('titles_model');
-    $data['response'] = $this->titles_model->updateTitle();
+    $data['response'] = $this->titles_model->updateTitle($title_id);
     
     $this->load->view('api/api_view', $data);
   }
