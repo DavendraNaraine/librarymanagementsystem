@@ -20,8 +20,17 @@ class Titles_model extends CI_Model{
     }
   }
   
-  function listTitle(){
+  function listTitles(){
+    $this->db->select('*');
+    $this->db->from('titles');
+    $query = $this->db->get();
     
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'Error loading list';
+    }
   }
   
   function updateTitle($title_id){
