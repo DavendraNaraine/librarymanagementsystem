@@ -37,12 +37,12 @@ class Users_model extends CI_Model{
       'active' => $active
     );
     
-    $this->db->select('*');
+    $this->db->select('*');//May need to change from all
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
     
-    if($query->num_rows() > 0){
+    if($query->num_rows() == 1){
       return $query->result();
     }
     else{
@@ -53,7 +53,7 @@ class Users_model extends CI_Model{
   function listUsers(){
     $active = 1; 
     
-    $this->db->select('*');
+    $this->db->select('*');//May need to change from all
     $this->db->from('users');
     $this->db->where('active', $active);
     $query = $this->db->get();
@@ -78,7 +78,7 @@ class Users_model extends CI_Model{
     $lastname = $this->input->post('lastname');
     $student_usi = $this->input->post('student_usi');
     
-    $this->db->select('*');
+    $this->db->select('*');//May need to change from all
     $this->db->from('users');
     
     if($username != null){
@@ -124,12 +124,12 @@ class Users_model extends CI_Model{
      'active' => 1
     );
     
-    $this->db->select('*');
+    $this->db->select('user_id');
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
     
-    if($query->num_rows() > 0){
+    if($query->num_rows() == 1){
       $this->db->where('user_id', $user_id);
       $this->db->update('users', $update);
       return $user_id;
@@ -147,7 +147,7 @@ class Users_model extends CI_Model{
       'active' => 1
     );
     
-    $this->db->select('*');
+    $this->db->select('user_id');
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
@@ -169,13 +169,13 @@ class Users_model extends CI_Model{
       'active' => 1
     );
     
-    $this->db->select('*');//specify column
+    $this->db->select('user_id, username ,student_usi, role');
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
     
-    if($query->num_rows() > 0){
-      return 'login';//return a session and the users' type Return Query->result
+    if($query->num_rows() == 1){
+      return $query->result();
     }
     else{
       return 'Error login in';

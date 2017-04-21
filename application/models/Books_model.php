@@ -6,7 +6,7 @@ class Books_model extends CI_Model{
     parent::__construct();
   }
     
-  function getBook(){
+  function getBook($book_id){
     
   }
   
@@ -15,7 +15,7 @@ class Books_model extends CI_Model{
   }
   
   
-  function updateBook(){
+  function updateBook($book_id){
     
   }
   
@@ -23,7 +23,7 @@ class Books_model extends CI_Model{
 
   }
   
-  function deleteBook(){
+  function deleteBook($book_id){
     
   }
   
