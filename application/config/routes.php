@@ -19,7 +19,7 @@ $route['v1/books/search']['post'] = "v1/books/searchBookBy";
 
 $route['v1/users/(:num)']['get'] = "v1/users/get_user/$1";
 $route['v1/users']['get'] = "v1/users/list_users";
-$route['v1/users/(:num)']['put'] = "v1/users/update_user/$1";
+$route['v1/users/(:num)']['post'] = "v1/users/update_user/$1";
 $route['v1/users']['post'] = "v1/users/create_user/$1";
 $route['v1/users/(:num)']['patch'] = "v1/users/delete_user/$1";
 $route['v1/users/search']['post'] = "v1/users/searchUserBy";

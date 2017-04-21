@@ -109,7 +109,34 @@ class Users_model extends CI_Model{
   }
   
   function updateUser($user_id){
-
+    
+    $update = array (
+      'username' => $this->input->post('username'),
+      'password' => $this->input->post('password'),
+      'first_name' => $this->input->post('firstname'),
+      'last_name' => $this->input->post('lastname'),
+      'student_usi' => $this->input->post('student_usi'),
+      'role' => $this->input->post('role')
+    );
+    
+    $data = array(
+     'user_id' => $user_id,
+     'active' => 1
+    );
+    
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->where($data);
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      $this->db->where('user_id', $user_id);
+      $this->db->update('users', $update);
+      return $user_id;
+    }
+    else{
+      return 'User cannot be updated';
+    }
   }
   
   function deleteUser($user_id){
@@ -142,13 +169,13 @@ class Users_model extends CI_Model{
       'active' => 1
     );
     
-    $this->db->select('*');
+    $this->db->select('*');//specify column
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
     
     if($query->num_rows() > 0){
-      return 'login';//return a session and the users' type
+      return 'login';//return a session and the users' type Return Query->result
     }
     else{
       return 'Error login in';
