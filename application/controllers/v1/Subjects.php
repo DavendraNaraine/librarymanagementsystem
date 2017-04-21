@@ -19,8 +19,12 @@ class Subjects extends CI_Controller{
     $this->load->view('api/api_view', $data);
   }
   
-  public function update_subject(){
+  public function update_subject($subject_id){
+    $this->load->database();
+    $this->load->model('subjects_model');
+    $data['response'] = $this->subjects_model->updateSubject($subject_id);
     
+    $this->load->view('api/api_view', $data);    
   }
   
   public function create_subject(){

@@ -52,8 +52,24 @@ class Subjects_model extends CI_model{
     }
   }
   
-  function updateSubject(){
+  function updateSubject($subject_id){
+    $update = array (
+      'subject_name' => $this->input->post('subject_name')
+    );
     
+    $this->db->select('*');
+    $this->db->from('subjects');
+    $this->db->where('subject_id', $subject_id);
+    $query = $this->db->get();
+    
+    if($query->num_rows() > 0){
+      $this->db->where('subject_id', $subject_id);
+      $this->db->update('subjects', $update);
+      return $subject_id;
+    }
+    else{
+      return 'Subject cannot be updated';
+    }
   }
 }
 ?>
