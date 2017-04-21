@@ -46,7 +46,7 @@
     </div>
 
     <div class="form-group text-center">
-        <a href="<?=$this->config->base_url()?>index.php/view-titles"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+        <a href="<?=$this->config->base_url()?>index.php/viewtitle"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
       View All Books by Title <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
     </button></a>
     </div>
@@ -57,12 +57,6 @@
     </button></a>
     </div>
 
-    <div class="form-group text-center">
-        <a href="book-number.php"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
-      Add Book by UG-ID Number <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    </button></a>
-    </div>
-
     <!--Search User goes here-->
-    <?php $this->load->view('main/search-book');?>
+    <?php $this->load->view('main/searchbook');?>
 </main>

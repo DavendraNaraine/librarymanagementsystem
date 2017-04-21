@@ -23,12 +23,12 @@
                 <td>7th</td>
                 <td>978-3-16-148410-0</td>
                 <td>
-                    <a href="#"><button type="button" class="btn btn-success" aria-label="Left Align">
+                    <a href=""><button type="button" class="btn btn-success" aria-label="Left Align">
           Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
         </button></a>
 
 
-                    <a href="book-list.php"><button type="button" class="btn btn-success" aria-label="Left Align">
+                    <a href="<?=$this->config->base_url()?>index.php/viewbook"><button type="button" class="btn btn-success" aria-label="Left Align">
           Borrow from Set <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
         </button></a>
                 </td>

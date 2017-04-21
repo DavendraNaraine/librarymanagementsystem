@@ -33,8 +33,8 @@
 
           <div class="form-group text-center white">
             <span>
-              <span><a style="color: white;" href="#">Forgot Password</a></span> &nbsp;&nbsp;&nbsp;
-              <span><a style="color: white;" href="#">Register</a></span>
+              <span><a style="color: white;" href="<?=$this->config->base_url()?>index.php/recover">Forgot Password</a></span> &nbsp;&nbsp;&nbsp;
+              <span><a style="color: white;" href="<?=$this->config->base_url()?>index.php/register">Register</a></span>
             </span>
           </div>
 
