@@ -75,7 +75,7 @@
 </script>
 
   <div class="form-group text-center">
-        <a href="<?php $this->load->view('main/viewuser');?>"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+        <a href="<?=$this->config->base_url()?>index.php/viewuser"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
       View All Users <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
     </button></a>
     </div>

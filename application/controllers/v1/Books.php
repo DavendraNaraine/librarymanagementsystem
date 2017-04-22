@@ -26,7 +26,7 @@ class Books extends CI_Controller{
     
     $this->load->view('api/api_view', $data);
   }
-  
+  /*
   public function create_book(){
     $this->load->database();
     $this->load->model('books_model');
@@ -34,7 +34,7 @@ class Books extends CI_Controller{
     
     $this->load->view('api/api_view', $data);
   }
-  
+  */
   public function delete_book($book_id){
     $this->load->database();
     $this->load->model('books_model');

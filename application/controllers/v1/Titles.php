@@ -33,6 +33,10 @@ class Titles extends CI_Controller{
     $data['response'] = $this->titles_model->addTitle();
     
     $this->load->view('api/api_view', $data);
+    /*
+    $this->load->model('books_model');
+    $this->books_model->addBook($data['response']);
+    */
   }
 }
 ?>
