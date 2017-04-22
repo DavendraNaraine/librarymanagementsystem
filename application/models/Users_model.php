@@ -37,7 +37,7 @@ class Users_model extends CI_Model{
       'active' => $active
     );
     
-    $this->db->select('*');//May need to change from all
+    $this->db->select('username, first_name, last_name, role');
     $this->db->from('users');
     $this->db->where($data);
     $query = $this->db->get();
@@ -53,7 +53,7 @@ class Users_model extends CI_Model{
   function listUsers(){
     $active = 1; 
     
-    $this->db->select('*');//May need to change from all
+    $this->db->select('username, first_name, last_name, role');
     $this->db->from('users');
     $this->db->where('active', $active);
     $query = $this->db->get();

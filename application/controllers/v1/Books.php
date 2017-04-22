@@ -59,10 +59,10 @@ class Books extends CI_Controller{
     $this->load->view('api/api_view', $data);
   }
   
-  public function return_book(){
+  public function return_book($borrowed_book_id){
     $this->load->database();
     $this->load->model('books_model');
-    $data['response'] = $this->books_model->returnBook();
+    $data['response'] = $this->books_model->returnBook($borrowed_book_id);
     
     $this->load->view('api/api_view', $data);
   }

@@ -24,7 +24,7 @@
           Delete <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </button></a>
 
-        <a href="#"><button type="button" class="btn btn-success" aria-label="Left Align">
+        <a href="<?=$this->config->base_url()?>index.php/borrow"><button type="button" class="btn btn-success" aria-label="Left Align">
           Borrow <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
         </button></a>
   </td>

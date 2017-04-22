@@ -16,6 +16,7 @@ $route['v1/books/(:num)']['post'] = "v1/books/update_book/$1";
 $route['v1/books']['post'] = "v1/books/create_book";
 $route['v1/books/(:num)']['patch'] = "v1/books/delete_book/$1";
 $route['v1/books/search']['post'] = "v1/books/searchBookBy";
+$route['v1/books/return/(:num)']['post'] = "v1/books/return_book/$1";
 
 $route['v1/users/(:num)']['get'] = "v1/users/get_user/$1";
 $route['v1/users']['get'] = "v1/users/list_users";
@@ -40,6 +41,7 @@ $route['gobook']['get'] = "book/index";
 $route['viewbook']['get'] = "book/viewBook";
 $route['borrow']['get'] = "book/borrowBook";
 $route['return']['get'] = "book/returnBook";
+$route['returnsearch']['get'] = "book/searchReturn";
 
 //Title
 $route['title']['get'] = "title/index";
