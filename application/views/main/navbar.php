@@ -21,7 +21,7 @@
                     </li>
                       <li><a href="<?=$this->config->base_url()?>index.php/borrow">Borrow Books</a>
                     </li>
-                    <li><a href="<?=$this->config->base_url()?>index.php/return">Return Books</a>
+                    <li><a href="<?=$this->config->base_url()?>index.php/searchreturn">Return Books</a>
                     </li>
                 </ul>
                 
