@@ -5,7 +5,7 @@ class Subject extends CI_Controller{
   
   public function index(){
     $this->load->database();
-    $this->load->model('subject_model');
+    $this->load->model('subjects_model');
     $this->load-view('main/header');
     $this->load-view('main/subject');
     $this->load-view('main/footer');

@@ -1,4 +1,30 @@
 <main>
+    <div class="row">
+        <div class="col">
+            <div class="form-group text-center">
+                <a href="<?=$this->config->base_url()?>index.php/title"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+      Add a New Book Title <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button></a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group text-center">
+                <a href="<?=$this->config->base_url()?>index.php/subject"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+      Add a New Book Subject <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button></a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group text-center">
+                <a href="<?=$this->config->base_url()?>index.php/viewtitle"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+      View All Books by Title <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+    </button></a>
+            </div>
+        </div>
+        <div class="col">col</div>
+    </div>
+
+
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-heading">
