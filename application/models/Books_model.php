@@ -6,12 +6,29 @@ class Books_model extends CI_Model{
     parent::__construct();
   }
     
-  function getBook($book_id){
+  function getBook($ug_id){
+    /*
+    $this->db->select('*');
+    $this->db->from('books');
+    $this->db->where('ug_id', $ug_id);
+    $query = $this->db->get();
     
+    if($query->num_rows() == 1){
+      return $query->result_set();
+    }
+    else{
+      return 'Book cannot be found';
+    }
+    */
   }
   
   function listBooks(){
     //title ug_id and condition
+    $this->db->select('*');
+    $this->db->from('books');
+    $this->db->join('titles', 'title_id = title_name');
+    $this->db->join('conditions', 'condition_id = condition_name');
+    $query = $this->db->get();
   }
   
   
@@ -77,11 +94,15 @@ class Books_model extends CI_Model{
   }
   
   function borrowBook(){
-    
-  }
-  
-  function returnSearch($ug_id){
-    
+    /*
+    $data = array (
+      'student_usi' => $this->input->post('')
+      'book_id' => $this->input->post('')
+      'staff_lent_id' => $this->input->post('')
+      'current_date' => $this->input->post('')
+      'borrowed_condition_id' => $this->input->post('')
+    );
+    */
   }
   
   function returnBook($borrowed_book_id){

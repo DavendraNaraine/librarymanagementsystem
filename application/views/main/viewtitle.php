@@ -1,4 +1,10 @@
 <div class="container">
+    
+    <ol class="breadcrumb">
+  <li><a href="<?=$this->config->base_url()?>index.php/book">Books</a></li>
+  <li class="active">Titles</li>
+</ol>
+    
     <table class="table table-hover">
         <thead>
             <tr>

@@ -1,4 +1,14 @@
-  <div class="modal-dialog">
+<div class="container">
+
+<ol class="breadcrumb">
+        <li><a href="<?=$this->config->base_url()?>index.php/book">Books</a></li>
+        <li><a href="<?=$this->config->base_url()?>index.php/viewtitle">Titles</a></li>
+      <li><a href="<?=$this->config->base_url()?>index.php/viewbook">Borrow Book</a></li>
+	   <li class="active">Borrow Book Information</li>
+    </ol>
+
+
+<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-heading">
 				<h2 class="text-center">Borrow Information</h2>
@@ -46,3 +56,6 @@
 	</div>
 
 <script type="text/javascript" src="<?=$this->config->base_url()?>res/js/autoEnterCurrentDate.js"></script>
+	
+		
+</div> 

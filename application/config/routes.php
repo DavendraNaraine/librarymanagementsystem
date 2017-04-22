@@ -55,3 +55,7 @@ $route['viewuser']['get'] = "user/viewUser";
 
 //Subject
 $route['subject']['get'] = "subject/index";
+
+
+//Process
+$route['process']['get'] = "process/index";
