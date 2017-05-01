@@ -9,7 +9,7 @@ class Users_model extends CI_Model{
   function addUser(){
     $data = array(
       'username' => $this->input->post('username'),
-      'password' => $this->input->post('password'),
+      'password' => md5($this->input->post('password')),
       'first_name' => $this->input->post('firstname'),
       'last_name' => $this->input->post('lastname'),
       'student_usi' => $this->input->post('student_usi'),
@@ -26,6 +26,7 @@ class Users_model extends CI_Model{
     }
     else{
       $this->db->insert('users', $data);
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user");
       return 'User added';
     }
   }

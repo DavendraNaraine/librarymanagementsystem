@@ -1,3 +1,6 @@
+<div class="alert alert-success" role="alert" style="display:none;">
+  <a href="#" class="alert-link">Well done! You successfully added a subject.</a>
+</div>
 <main>
   <div class="modal-dialog">
     <div class="modal-content">
