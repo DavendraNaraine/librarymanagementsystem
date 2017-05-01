@@ -79,9 +79,18 @@ class Titles_model extends CI_Model{
     else{
       $this->db->insert('titles', $data); 
       $insert_id = $this->db->insert_id();
+      /*
       header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title");
-      return $insert_id;
-    }  
+      */
+      $subjects = $this->input->post('subjects');
+      foreach($subjects as $subject){
+        $title_subject_info = array(
+          'title_id' => $insert_id,
+          'subject_id' => $subject
+        );
+        $this->db->insert('title_subjects', $title_subject_info);
+      }
+    } 
   }    
 }
 ?>
