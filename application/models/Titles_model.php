@@ -7,7 +7,7 @@ class Titles_model extends CI_Model{
   }
 
   function getTitle($title_id){
-    $this->db->select('*');
+    $this->db->select('title_name, title_author, title_publisher, title_edition, title_isbn');
     $this->db->from('titles');
     $this->db->where('title_id', $title_id);
     $query = $this->db->get();
@@ -21,7 +21,7 @@ class Titles_model extends CI_Model{
   }
 
   function listTitles(){
-    $this->db->select('*');
+    $this->db->select('title_name, title_author, title_publisher, title_edition, title_isbn');
     $this->db->from('titles');
     $query = $this->db->get();
 
