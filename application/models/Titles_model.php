@@ -74,12 +74,12 @@ class Titles_model extends CI_Model{
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
-      return 'Book exist';
+      return 'Book exists';
     }
     else{
       $this->db->insert('titles', $data); 
       $insert_id = $this->db->insert_id();
-      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title");  
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title");
       return $insert_id;
     }  
   }    
