@@ -6,12 +6,12 @@ class Books_model extends CI_Model{
     parent::__construct();
   }
 
-  function getBook($ug_id){
+  function getBook(){
 
   }
 
   function listBooks(){
-    
+
   }
 
 
@@ -41,8 +41,26 @@ class Books_model extends CI_Model{
     }
   }
 
-  function addBook($title_id){
+  function addBook(){
+    $data = array(
+      'title_id' => $this->input->post('titleid'),
+      'ug_id' => $this->input->post('ugid'),
+      'condition_id' => $this->input->post('conditionid'),
+      'active' => 1
+    );
 
+    $this->db->select('ug_id');
+    $this->db->from('books');
+    $this->db->where('ug_id' , $data['ug_id']);  
+    $query = $this->db->get();
+
+    if($query->num_rows() > 0){
+      return 'Book exists';
+    }
+    else{
+      $this->db->insert('books', $data); 
+      return 'Book added';
+    }
   }
 
   function deleteBook($book_id){
