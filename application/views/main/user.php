@@ -1,5 +1,5 @@
 <div class="alert alert-success" role="alert" style="display:none;">
-  <a href="#" class="alert-link">Well done! You successfully added a user.</a>
+  <a href="#" class="alert-link">Well done! You successfully added a new user.</a>
 </div>
 <div class="modal-dialog">
     <div class="modal-content">
