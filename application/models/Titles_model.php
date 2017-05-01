@@ -5,13 +5,13 @@ class Titles_model extends CI_Model{
   function __construct(){
     parent::__construct();
   }
-  
+
   function getTitle($title_id){
     $this->db->select('*');
     $this->db->from('titles');
     $this->db->where('title_id', $title_id);
     $query = $this->db->get();
-    
+
     if($query->num_rows() > 0){
       return $query->result();
     }
@@ -19,12 +19,12 @@ class Titles_model extends CI_Model{
       return 'Title does not exist';
     }
   }
-  
+
   function listTitles(){
     $this->db->select('*');
     $this->db->from('titles');
     $query = $this->db->get();
-    
+
     if($query->num_rows() > 0){
       return $query->result();
     }
@@ -32,7 +32,7 @@ class Titles_model extends CI_Model{
       return 'Error loading list';
     }
   }
-  
+
   function updateTitle($title_id){
     $update = array (
       'title_name' => $this->input->post('title'),
@@ -42,12 +42,12 @@ class Titles_model extends CI_Model{
       'title_publisher' => $this->input->post('publisher'),
       'title_isbn' => $this->input->post('isbn')
     );
-    
+
     $this->db->select('*');
     $this->db->from('titles');
     $this->db->where('title_id', $title_id);
     $query = $this->db->get();
-    
+
     if($query->num_rows() > 0){
       $this->db->where('title_id', $title_id);
       $this->db->update('titles', $update);
@@ -57,9 +57,9 @@ class Titles_model extends CI_Model{
       return 'Title cannot be updated';
     }
   }
-  
+
   function addTitle(){
-      $data = array(
+    $data = array(
       'title_name' => $this->input->post('title'),
       'title_author' => $this->input->post('author'),
       'title_coauthor' => $this->input->post('coAuthor'),
@@ -67,24 +67,21 @@ class Titles_model extends CI_Model{
       'title_publisher' => $this->input->post('publisher'),
       'title_isbn' => $this->input->post('isbn')
     );
-    
+
     $this->db->select('title_isbn');
     $this->db->from('titles');
     $this->db->where('title_isbn' , $data['title_isbn']);  
     $query = $this->db->get();
-    
+
     if($query->num_rows() > 0){
       return 'Book exist';
     }
     else{
       $this->db->insert('titles', $data); 
-      $insert_id = $this->db->insert_id();    
+      $insert_id = $this->db->insert_id();
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title");  
       return $insert_id;
     }  
-  }
-    
-
-    
-    
+  }    
 }
 ?>

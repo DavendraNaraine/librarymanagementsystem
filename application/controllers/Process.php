@@ -15,6 +15,7 @@ class Process extends CI_Controller{
 
         );
         var_dump($passData);
+        implode(" ",$passData);
         $url = $this->config->base_url().'index.php/v1/titles';
 
         echo '<br><hr><h2>'.$this->postCURL($url, $passData).'</h2><br><hr><br>';

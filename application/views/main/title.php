@@ -6,7 +6,7 @@
 		</div>
 		<hr/>
 		<div class="modal-body">
-			<form class="form-horizontal add" action="process" method="post" role="form">
+			<form class="form-horizontal add" action="v1/titles" method="post" role="form">
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="">Title Name</label>
 					<div class="col-sm-10">
