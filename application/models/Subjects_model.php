@@ -21,6 +21,7 @@ class Subjects_model extends CI_model{
     }
     else{
       $this->db->insert('subjects', $data);
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/subject");
       return 'Subject added';
     }
   }

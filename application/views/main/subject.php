@@ -7,11 +7,11 @@
       </div>
       <hr/>
       <div class="modal-body">
-        <form class="form-horizontal add" action="" role="form">
+        <form class="form-horizontal add" action="v1/subjects" method="post" role="form">
           <div class="form-group">
             <label class="control-label col-sm-2" for="">Subject Name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="" placeholder="">
+              <input type="text" class="form-control" name="subject_name" id="subject_name" placeholder="">
             </div>
           </div>
 
