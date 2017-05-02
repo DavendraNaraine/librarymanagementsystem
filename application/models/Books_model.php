@@ -6,12 +6,12 @@ class Books_model extends CI_Model{
     parent::__construct();
   }
 
-  function getBook(){
-
+  function getBook($book_id){
+    
   }
 
   function listBooks(){
-
+    
   }
 
 

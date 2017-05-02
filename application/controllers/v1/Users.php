@@ -19,7 +19,7 @@ class Users extends CI_Controller{
     $this->load->view('api/api_view', $data);
   }
   
-  public function searchUserBy(){
+  public function search_user_by(){
     $this->load->database();
     $this->load->model('users_model');
     $data['response'] = $this->users_model->searchUser();

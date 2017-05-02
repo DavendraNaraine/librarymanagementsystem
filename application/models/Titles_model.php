@@ -7,7 +7,7 @@ class Titles_model extends CI_Model{
   }
 
   function getTitle($title_id){
-    $this->db->select('title_name, title_author, title_publisher, title_edition, title_isbn');
+    $this->db->select('title_id, title_name, title_author, title_publisher, title_edition, title_isbn');
     $this->db->from('titles');
     $this->db->where('title_id', $title_id);
     $query = $this->db->get();
@@ -21,7 +21,7 @@ class Titles_model extends CI_Model{
   }
 
   function listTitles(){
-    $this->db->select('title_name, title_author, title_publisher, title_edition, title_isbn');
+    $this->db->select('title_id, title_name, title_author, title_publisher, title_edition, title_isbn');
     $this->db->from('titles');
     $query = $this->db->get();
 
@@ -90,7 +90,62 @@ class Titles_model extends CI_Model{
         );
         $this->db->insert('title_subjects', $title_subject_info);
       }
+      
+      $books = $this->input->post('books');
+      foreach($books as $book){
+        $book_info = array(
+          'title_id' => $insert_id,
+          'condition_id' => $condition[],
+          'ug_id' => $ug[],
+          'active' => 1
+        );
+        $this->db->insert('books', $book_info);
+      }
+      return 'Titles and Books added.';
     } 
-  }    
+  }
+
+  function searchTitle(){
+    $title = null;
+    $subject = null;
+    $author = null;
+    $isbn = null; 
+
+    $title = $this->input->post('title');
+    $subject = $this->input->post('subject');
+    $author = $this->input->post('author'); 
+    $isbn = $this->input->post('isbn');
+
+    if($title != null){
+      $this->db->select('*');
+      $this->db->from('titles');
+      $this->db->where('title_name', $title);
+    }
+    elseif($author != null){
+      $this->db->select('*');
+      $this->db->from('titles');
+      $this->db->where('title_author', $author);
+    }
+    elseif($isbn != null){
+      $this->db->select('*');
+      $this->db->from('titles');
+      $this->db->where('title_isbn', $isbn);
+    }
+    else{
+      $this->db->select('subject_id');
+      $this->db->from('subjects');
+      $this->db->where('subject_name', $subject);
+      //Complete this!
+    }
+
+    $query = $this->db->get();
+
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'Title not found';
+    }
+  }
 }
 ?>
