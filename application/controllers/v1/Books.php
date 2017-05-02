@@ -43,7 +43,7 @@ class Books extends CI_Controller{
     $this->load->view('api/api_view', $data);
   } 
   
-  public function search_book_By(){
+  public function search_book_by(){
     $this->load->database();
     $this->load->model('books_model');
     $data['response'] = $this->books_model->searchBook();
