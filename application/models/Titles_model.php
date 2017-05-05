@@ -88,6 +88,19 @@ class Titles_model extends CI_Model{
         );
         $this->db->insert('title_subjects', $title_subject_info);
       }
+      
+      $conditions = $this->input->post('conditions');
+      $ugids = $this->input->post('ugids');
+      $i = 0;
+      foreach($conditions as $condition){
+        $book_info = array(
+          'title_id' => $insert_id,
+          'condition_id' => $condition,
+          'ug_id' => $ugids[$i]
+        );
+        $this->db->insert('books', $book_info);
+        $i = $i + 1; 
+      }
       return 0;
     }
   } 
