@@ -47,6 +47,8 @@ $route['viewreturn']['get'] = "book/viewReturn";
 //Title
 $route['title']['get'] = "title/index";
 $route['viewtitle']['get'] = "title/viewTitle";
+$route['title-success']['get'] = "title/viewTitleSuccess";
+$route['title-fail']['get'] = "title/viewTitleFail";
 
 //User
 $route['user']['get'] = "user/index";

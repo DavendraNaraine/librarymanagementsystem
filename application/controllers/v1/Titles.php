@@ -30,7 +30,7 @@ class Titles extends CI_Controller{
   public function create_title(){
     $this->load->database();
     $this->load->model('titles_model');
-    $data['response'] = $this->titles_model->addTitle();
+    $data['response'] = $this->titles_model->addTitleView();
     
     $this->load->view('api/api_view', $data);
   }
