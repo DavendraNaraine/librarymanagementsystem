@@ -38,7 +38,7 @@ class Users extends CI_Controller{
   public function create_user(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->addUser();
+    $data['response'] = $this->users_model->addUserView();
     
     $this->load->view('api/api_view', $data);
   }
