@@ -53,10 +53,13 @@ $route['title-fail']['get'] = "title/viewTitleFail";
 //User
 $route['user']['get'] = "user/index";
 $route['viewuser']['get'] = "user/viewUser";
+$route['user-success']['get'] = "user/viewUserSuccess";
+$route['user-fail']['get'] = "user/viewUserFail";
 
 //Subject
 $route['subject']['get'] = "subject/index";
-
+$route['subject-success']['get'] = "subject/viewSubjectSuccess";
+$route['subject-fail']['get'] = "subject/viewSubjectFail";
 
 //Process
 $route['process']['get'] = "process/index";

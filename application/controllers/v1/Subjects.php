@@ -30,7 +30,7 @@ class Subjects extends CI_Controller{
   public function create_subject(){
     $this->load->database();
     $this->load->model('subjects_model');
-    $data['response'] = $this->subjects_model->addSubject();
+    $data['response'] = $this->subjects_model->addSubjectView();
     
     $this->load->view('api/api_view' , $data);
   } 
