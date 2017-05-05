@@ -79,23 +79,32 @@ class Titles_model extends CI_Model{
     else{
       $this->db->insert('titles', $data); 
       $insert_id = $this->db->insert_id();
-//       header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-success");
+
+      $subjects = $this->input->post('subjects');
+      foreach($subjects as $subject){
+        $title_subject_info = array(
+          'title_id' => $insert_id,
+          'subject_id' => $subject
+        );
+        $this->db->insert('title_subjects', $title_subject_info);
+      }
       return 0;
     }
   } 
-    
- function addTitleView(){
-     $add = $this->addTitle();
-     if($add==0){
-         //Title added successfully, redirect to success page
-         header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-success");
-     }
-     else {
-         //Title add was unsuccessful, reidrect to fail page
-         header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-fail");
-     }
- }
+
+  function addTitleView(){
+    $add = $this->addTitle();
+    if($add==0){
+      //Title added successfully, redirect to success page
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-success");
+    }
+    else {
+      //Title add was unsuccessful, reidrect to fail page
+      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-fail");
+    }
+  }
 }
+
 /*
   function searchTitle(){
     $title = null;
