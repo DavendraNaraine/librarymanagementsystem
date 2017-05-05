@@ -29,7 +29,7 @@ class Titles_model extends CI_Model{
       return $query->result();
     }
     else{
-      return 'Error loading list';
+      return 'No titles';
     }
   }
 
@@ -90,9 +90,24 @@ class Titles_model extends CI_Model{
         );
         $this->db->insert('title_subjects', $title_subject_info);
       }
-    } 
-  }
-
+/*
+      $conditions = $this->input->post('conditions');
+      $ugid = $this->input->post('ugid');
+      $i = 0; 
+      foreach($conditions as $condition){
+        $book_info = array(
+          'title_id' => $insert_id,
+          'condition_id' => $condition,
+          'ug_id' => $ugid[$i];
+        );
+        $this->db->insert('books', $book_info);
+        $i = $i++; 
+      }
+*/      
+    }
+  } 
+}
+/*
   function searchTitle(){
     $title = null;
     $subject = null;
@@ -135,5 +150,5 @@ class Titles_model extends CI_Model{
       return 'Title not found';
     }
   }
-}
+  */
 ?>
