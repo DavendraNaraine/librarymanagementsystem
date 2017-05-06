@@ -55,9 +55,10 @@
     </div>
 
     <div class="form-group text-center">
-        <a href="<?=$this->config->base_url()?>index.php/viewtitle"><button type="button" class="btn btn-success btn-lg" aria-label="Left Align">
+        <form class="form-horizontal add" action="v1/titles" method="get" role="form">    
+       <button type="submit" class="btn btn-success btn-lg" aria-label="Left Align">
       View All Books by Title <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-    </button></a>
+           </button><!-- </a>--> </form>
     </div>
 
     <div class="form-group text-center">
