@@ -87,7 +87,7 @@ class Books_model extends CI_Model{
     $update = array ('active' => 0);
 
     $data = array(
-      'book_id' =>$book_id,
+      'book_id' => $book_id,
       'active' => 1
     );
 
@@ -107,7 +107,20 @@ class Books_model extends CI_Model{
   }
 
   function searchBook(){
+    $ug_id = $this->input->post('ugid');
 
+    $this->db->select('*');
+    $this->db->from('books');
+    $this->db->join('titles', 'books.title_id = titles.title_id');
+    $this->db->where('ug_id', $ug_id);
+    $query = $this->db->get();
+
+    if($query->num_rows() > 0){
+      return $query->result();
+    }
+    else{
+      return 'Book does not exist';
+    }
   }
 
   function borrowBook(){
