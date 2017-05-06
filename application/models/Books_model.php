@@ -7,11 +7,11 @@ class Books_model extends CI_Model{
   }
 
   function getBook($book_id){
-    
+
   }
 
   function listBooks(){
-    
+
   }
 
 

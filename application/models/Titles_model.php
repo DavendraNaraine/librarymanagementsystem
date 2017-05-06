@@ -88,7 +88,7 @@ class Titles_model extends CI_Model{
         );
         $this->db->insert('title_subjects', $title_subject_info);
       }
-      
+
       $conditions = $this->input->post('conditions');
       $ugids = $this->input->post('ugids');
       $i = 0;
@@ -116,9 +116,7 @@ class Titles_model extends CI_Model{
       header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/title-fail");
     }
   }
-}
 
-/*
   function searchTitle(){
     $title = null;
     $subject = null;
@@ -146,10 +144,10 @@ class Titles_model extends CI_Model{
       $this->db->where('title_isbn', $isbn);
     }
     else{
-      $this->db->select('subject_id');
-      $this->db->from('subjects');
-      $this->db->where('subject_name', $subject);
-      //Complete this!
+      $this->db->select('*');
+      $this->db->from('title_subjects');
+      $this->db->join('titles', 'title_subjects.title_id = titles.title_id');
+      $this->db->where('subject_id', $subject);
     }
 
     $query = $this->db->get();
@@ -161,5 +159,5 @@ class Titles_model extends CI_Model{
       return 'Title not found';
     }
   }
-  */
+}
 ?>
