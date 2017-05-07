@@ -16,7 +16,7 @@ class Titles extends CI_Controller{
     $this->load->model('titles_model');
     $data['response'] = $this->titles_model->listTitles();
     
-    $this->load->view('api/title_view', $data);
+    $this->load->view('api/api_view', $data);
   }
   
   public function update_title($title_id){
