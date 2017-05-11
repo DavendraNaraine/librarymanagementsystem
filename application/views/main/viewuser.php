@@ -20,8 +20,8 @@
                 <td>Librarian</td>
                 <td>
                     <a href="#"><button type="button" class="btn btn-success" aria-label="Left Align">
-          Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-        </button></a>
+                        Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </button></a>
                 </td>
             </tr>
 

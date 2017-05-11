@@ -1,10 +1,14 @@
+<?php
+echo "All titles:<br>";
+echo json_encode($response);
+?>
 <div class="container">
-    
+
     <ol class="breadcrumb">
-  <li><a href="<?=$this->config->base_url()?>index.php/book">Books</a></li>
-  <li class="active">Titles</li>
-</ol>
-    
+        <li><a href="<?=$this->config->base_url()?>index.php/book">Books</a></li>
+        <li class="active">Titles</li>
+    </ol>
+
     <table class="table table-hover">
         <thead>
             <tr>
@@ -30,16 +34,20 @@
                 <td>978-3-16-148410-0</td>
                 <td>
                     <a href=""><button type="button" class="btn btn-success" aria-label="Left Align">
-          Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-        </button></a>
+                        Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </button></a>
 
 
                     <a href="<?=$this->config->base_url()?>index.php/viewbook"><button type="button" class="btn btn-success" aria-label="Left Align">
-          Borrow from Set <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-        </button></a>
+                        Borrow from Set <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                        </button></a>
                 </td>
             </tr>
 
         </tbody>
     </table>
+    
+    <div id="list-title">
+             
+    </div>
 </div>
