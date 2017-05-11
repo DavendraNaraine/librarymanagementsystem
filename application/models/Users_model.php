@@ -22,7 +22,6 @@ class Users_model extends CI_Model{
         $query = $this->db->get();
 
         if($query->num_rows() > 0){
-<<<<<<< Updated upstream
             return 1;
         }
         else{
@@ -40,15 +39,7 @@ class Users_model extends CI_Model{
         }
         else {
             //User add was unsuccessful, reidrect to fail page
-            header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user-fail");
-=======
-            return 'Username exists';
-        }
-        else{
-            $this->db->insert('users', $data);
-            header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user");
-            return 'User added';
->>>>>>> Stashed changes
+             header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user-fail");
         }
     }
 
@@ -63,10 +54,6 @@ class Users_model extends CI_Model{
         $this->db->from('users');
         $this->db->where($data);
         $query = $this->db->get();
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         if($query->num_rows() == 1){
             return $query->result();
         }

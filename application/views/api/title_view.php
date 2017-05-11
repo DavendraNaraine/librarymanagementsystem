@@ -1,10 +1,11 @@
 <div class="container">
-
     <ol class="breadcrumb">
         <li><a href="<?=$this->config->base_url()?>index.php/book">Books</a></li>
         <li class="active">Titles</li>
     </ol>
-
+    <ul>
+        
+    </ul>
     <table class="table table-hover">
         <thead>
             <tr>
@@ -22,12 +23,12 @@
             <tr>
                 <!-- Dynamic content will have to go here-->
                 <th scope="row">1</th>
-                <td>Database</td>
-                <td>Database Design for Noobs</td>
-                <td>Sir G</td>
-                <td>University of Ghana</td>
-                <td>7th</td>
-                <td>978-3-16-148410-0</td>
+                <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
+                 <td></td>
                 <td>
                     <a href=""><button type="button" class="btn btn-success" aria-label="Left Align">
           Edit <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -47,16 +48,23 @@
 <script type='text/javascript'>
     $(document).ready(function() {
         /* call the php that has the php array which is json_encoded */
-        $.getJSON('api_view.php', function(data) {
+        $.getJSON('../../application/views/api/api_view.php', function(data) {
             /* data will hold the php array as a javascript object */
             $.each(data, function(key, val) {
-                $('tr').append('<th id="' + key + '">' +  '</th>');
-                $('td').append(val.title_name);
-                $('td').append(val.title_author);
-                $('td').append(val.title_edition);
-                $('td').append(val.title_publisher);
+//                 $('tr').append('<th id="' + key + '">' +  '</th>');
+//                 $('td').append(val.title_name);
+//                 $('td').append(val.title_author);
+//                 $('td').append(val.title_edition);
+//                 $('td').append(val.title_publisher);
+//                 $('td').append(val.title_isbn);
+                $('ul').append('<li id="' + key + '">' + val.title_name + ' ' + val.title_author + ' ' + val.title_edition + ' ' + val.title_publisher + ' ' + val.title_isbn + '</li>');
             });
         });
 
     });
+    
+   
 </script>
+
+
+
