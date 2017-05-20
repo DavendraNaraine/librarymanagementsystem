@@ -1,6 +1,6 @@
 <?php
-echo "All titles:<br>";
-echo json_encode($response);
+// echo "All titles:<br>";
+// echo json_encode($response);
 ?>
 <div class="container">
 

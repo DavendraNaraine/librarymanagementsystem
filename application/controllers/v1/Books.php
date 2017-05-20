@@ -22,9 +22,20 @@ class Books extends CI_Controller{
   public function update_book($book_id){
     $this->load->database();
     $this->load->model('books_model');
-    $data['response'] = $this->books_model->updateBook($book_id);
     
-    $this->load->view('api/api_view', $data);
+    $book = json_decode($this->input->raw_input_stream);
+    
+//     var_dump($book);
+    
+    if(!is_numeric($book_id) || $book != NULL) {
+        $data['response'] = $this->books_model->updateBook($book_id, $book);
+    
+        $this->load->view('api/api_view', $data);
+    } else {
+        $this->load->view("api/api_view", array(
+          "response" => "bare problems")
+        );
+    }
   }
   
   public function create_book(){
