@@ -25,6 +25,9 @@ class Books_model extends CI_Model{
     $this->db->select('*');
     $this->db->from('books');
     $this->db->join('titles', 'books.title_id = titles.title_id');
+	$this->db->join('condition', 'books.condition_id = condition.condition_id');
+	$this->db->where('books.active', 1);
+	$this->db->order_by('titles.title_name', 'asc');
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
@@ -41,6 +44,7 @@ class Books_model extends CI_Model{
 	  $q = $this->db->where('books.book_id', $book_id)->update('books', $book);
 	  
 	  return $q;
+	 
   }
 
   function addBook(){
@@ -75,7 +79,7 @@ class Books_model extends CI_Model{
 
     $this->db->select('book_id');
     $this->db->from('books');
-    $this->db->where($data);
+    $this->db->where($data); 
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
