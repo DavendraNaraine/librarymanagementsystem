@@ -7,7 +7,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['v1/titles/(:num)']['get'] = "v1/titles/get_title/$1";
 $route['v1/titles']['get'] = "v1/titles/list_titles";
-$route['v1/titles/(:num)']['post'] = "v1/titles/update_title/$1";
+$route['v1/titles/(:num)']['patch'] = "v1/titles/update_title/$1";
 $route['v1/titles']['post'] = "v1/titles/create_title";
 $route['v1/titles/search']['post'] = "v1/titles/search_title";
 

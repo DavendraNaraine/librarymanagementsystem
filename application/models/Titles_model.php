@@ -7,8 +7,9 @@ class Titles_model extends CI_Model{
   }
 
   function getTitle($title_id){
-    $this->db->select('title_id, title_name, title_author, title_publisher, title_edition, title_isbn');
+    $this->db->select('*');
     $this->db->from('titles');
+    $this->db->join('subjects', 'titles.subject_id = subject.subject_id');
     $this->db->where('title_id', $title_id);
     $query = $this->db->get();
 
@@ -21,8 +22,11 @@ class Titles_model extends CI_Model{
   }
 
   function listTitles(){
-    $this->db->select('title_id, title_name, title_author, title_publisher, title_edition, title_isbn');
+    $this->db->select('*');
     $this->db->from('titles');
+    $this->db->join('title_subjects', 'titles.title_id = title_subjects.title_id');
+    $this->db->join('subjects', 'title_subjects.subject_id  = subjects.subject_id');
+    $this->db->order_by('titles.title_name', 'asc');
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
@@ -33,29 +37,9 @@ class Titles_model extends CI_Model{
     }
   }
 
-  function updateTitle($title_id){
-    $update = array (
-      'title_name' => $this->input->post('title'),
-      'title_author' => $this->input->post('author'),
-      'title_coauthor' => $this->input->post('coAuthor'),
-      'title_edition' => $this->input->post('edition'),
-      'title_publisher' => $this->input->post('publisher'),
-      'title_isbn' => $this->input->post('isbn')
-    );
-
-    $this->db->select('*');
-    $this->db->from('titles');
-    $this->db->where('title_id', $title_id);
-    $query = $this->db->get();
-
-    if($query->num_rows() > 0){
-      $this->db->where('title_id', $title_id);
-      $this->db->update('titles', $update);
-      return $title_id;
-    }
-    else{
-      return 'Title cannot be updated';
-    }
+  function updateTitle($title_id = NULL, $title = NULL){
+    $q = $this->db->where('titles.title_id', $title_id)->update('titles', $title);
+    return $q;
   }
 
   function addTitle(){

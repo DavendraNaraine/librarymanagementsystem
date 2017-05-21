@@ -15,20 +15,24 @@ class Titles extends CI_Controller{
         $this->load->database();
         $this->load->model('titles_model');
         $data['response'] = $this->titles_model->listTitles();
-
-        $this->load->view('main/header');
-        $this->load->view('main/navbar');
-         $this->load->view('api/api_view', $data);
-        $this->load->view('api/title_view', $data);
-        $this->load->view('main/footer');
+        $this->load->view('api/api_view', $data);
     }
 
     public function update_title($title_id){
         $this->load->database();
         $this->load->model('titles_model');
-        $data['response'] = $this->titles_model->updateTitle($title_id);
-
-        $this->load->view('api/api_view', $data);
+        
+        $title = json_decode($this->input->raw_input_stream);
+        
+        
+       if(!is_numeric($title_id) || $title != NULL) {
+            $data['response'] = $this->titles_model->updateTitle($title_id, $title);
+            $this->load->view('api/api_view', $data);
+         } 
+            else {
+                $this->load->view("api/api_view", array(
+                "response" => "bare problems"));
+             }
     }
 
     public function create_title(){
