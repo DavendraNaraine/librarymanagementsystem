@@ -55,18 +55,15 @@ class Books_model extends CI_Model{
       'active' => 1
     );
 
-    $this->db->select('ug_id');
-    $this->db->from('books');
-    $this->db->where('ug_id' , $data['ug_id']);  
-    $query = $this->db->get();
+//     $this->db->select('ug_id');
+//     $this->db->from('books');
+//     $this->db->where('ug_id' , $data['ug_id']);  
+//     $query = $this->db->get();
 
-    if($query->num_rows() > 0){
-      return 'Book exists';
-    }
-    else{
+   
       $this->db->insert('books', $data); 
       return 'Book added';
-    }
+    
   }
 
   function deleteBook($book_id){
