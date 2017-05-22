@@ -40,53 +40,38 @@ class Books_model extends CI_Model{
 
   function updateBook($book_id = NULL, $book = NULL){
 // 	  unset($book->book_id);
-	  
 	  $q = $this->db->where('books.book_id', $book_id)->update('books', $book);
-	  
-	  return $q;
-	 
+	 	return $q;	 
   }
 
-  function addBook(){
-    $data = array(
-      'title_id' => $this->input->post('titleid'),
-      'ug_id' => $this->input->post('ugid'),
-      'condition_id' => $this->input->post('conditionid'),
-      'active' => 1
-    );
-
-//     $this->db->select('ug_id');
-//     $this->db->from('books');
-//     $this->db->where('ug_id' , $data['ug_id']);  
-//     $query = $this->db->get();
-
-   
-      $this->db->insert('books', $data); 
-      return 'Book added';
-    
+  function addBook($book){   
+      $this->db->insert('books', $book); 
+   	 return "Book added, hell yeah";
   }
 
   function deleteBook($book_id){
-    $update = array ('active' => 0);
+//     $update = array ('active' => 0);
 
-    $data = array(
-      'book_id' => $book_id,
-      'active' => 1
+     $data = array(
+//       'book_id' => $book_id,
+      'active' => 0
     );
 
-    $this->db->select('book_id');
-    $this->db->from('books');
-    $this->db->where($data); 
-    $query = $this->db->get();
+//     $this->db->select('book_id');
+//     $this->db->from('books');
+//     $this->db->where($data); 
+//     $query = $this->db->get();
 
-    if($query->num_rows() > 0){
-      $this->db->where('book_id', $book_id);
-      $this->db->update('books', $update);
-      return $book_id;
-    }
-    else{
-      return 'Book does not exist';
-    }
+//     if($query->num_rows() > 0){
+//       $this->db->where('book_id', $book_id);
+//       $this->db->update('books', $update);
+//       return $book_id;
+//     }
+//     else{
+//       return 'Book does not exist';
+//     }
+	    $q = $this->db->where('books.book_id', $book_id)->update('books', $data);
+	 	return $q;	
   }
 
   function searchBook(){

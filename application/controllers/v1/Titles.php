@@ -21,26 +21,35 @@ class Titles extends CI_Controller{
     public function update_title($title_id){
         $this->load->database();
         $this->load->model('titles_model');
-        
+
         $title = json_decode($this->input->raw_input_stream);
-        
-        
-       if(!is_numeric($title_id) || $title != NULL) {
+
+
+        if(!is_numeric($title_id) || $title != NULL) {
             $data['response'] = $this->titles_model->updateTitle($title_id, $title);
             $this->load->view('api/api_view', $data);
-         } 
-            else {
-                $this->load->view("api/api_view", array(
+        } 
+        else {
+            $this->load->view("api/api_view", array(
                 "response" => "bare problems"));
-             }
+        }
     }
 
     public function create_title(){
         $this->load->database();
         $this->load->model('titles_model');
-        $data['response'] = $this->titles_model->addTitleView();
+        $title = json_decode($this->input->raw_input_stream);
+        //$data['response'] = $this->titles_model->addTitleView();
+        //         $this->load->view('api/api_view', $data);
 
-        $this->load->view('api/api_view', $data);
+        if($title != NULL) {
+            $data['response'] = $this->titles_model->addTitle();
+            $this->load->view('api/api_view', $data);
+        } else {
+            $this->load->view("api/api_view", array(
+                "response" => "bare problems")
+                             );
+        }
     }
 
     public function search_title(){
@@ -50,6 +59,6 @@ class Titles extends CI_Controller{
 
         $this->load->view('api/api_view', $data);    
     }
-  
+
 }
 ?>

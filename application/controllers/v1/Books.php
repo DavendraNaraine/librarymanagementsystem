@@ -41,7 +41,9 @@ class Books extends CI_Controller{
   public function create_book(){
     $this->load->database();
     $this->load->model('books_model');
-    $data['response'] = $this->books_model->addBook();
+    $book = json_decode($this->input->raw_input_stream);
+      
+    $data['response'] = $this->books_model->addBook($book);
     
     $this->load->view('api/api_view', $data);
   }
