@@ -42,9 +42,9 @@ class Titles_model extends CI_Model{
     return $q;
   }
 
-  function addTitle(){
+  function addTitle($title){
        $q = $this->db->insert('titles', $title);
-      return $q;
+      return "Title Added";
 //     $data = array(
 //       'title_name' => $this->input->post('title'),
 //       'title_author' => $this->input->post('author'),
