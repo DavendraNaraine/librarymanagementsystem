@@ -21,9 +21,7 @@ class Titles extends CI_Controller{
   public function update_title($title_id){
     $this->load->database();
     $this->load->model('titles_model');
-
     $title = json_decode($this->input->raw_input_stream);
-
 
     if(!is_numeric($title_id) || $title != NULL) {
       $data['response'] = $this->titles_model->updateTitle($title_id, $title);
