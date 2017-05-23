@@ -43,52 +43,52 @@ class Titles_model extends CI_Model{
   }
 
   function addTitle($title){
-       $q = $this->db->insert('titles', $title);
-      return "Title Added";
-//     $data = array(
-//       'title_name' => $this->input->post('title'),
-//       'title_author' => $this->input->post('author'),
-//       'title_coauthor' => $this->input->post('coAuthor'),
-//       'title_edition' => $this->input->post('edition'),
-//       'title_publisher' => $this->input->post('publisher'),
-//       'title_isbn' => $this->input->post('isbn')
-//     );
+    $q = $this->db->insert('titles', $title);
+    return "Title Added";
+    //     $data = array(
+    //       'title_name' => $this->input->post('title'),
+    //       'title_author' => $this->input->post('author'),
+    //       'title_coauthor' => $this->input->post('coAuthor'),
+    //       'title_edition' => $this->input->post('edition'),
+    //       'title_publisher' => $this->input->post('publisher'),
+    //       'title_isbn' => $this->input->post('isbn')
+    //     );
 
-//     $this->db->select('title_isbn');
-//     $this->db->from('titles');
-//     $this->db->where('title_isbn' , $data['title_isbn']);  
-//     $query = $this->db->get();
+    //     $this->db->select('title_isbn');
+    //     $this->db->from('titles');
+    //     $this->db->where('title_isbn' , $data['title_isbn']);  
+    //     $query = $this->db->get();
 
-//     if($query->num_rows() > 0){
-//       return 1;
-//     }
-//     else{
-//       $this->db->insert('titles', $data); 
-//       $insert_id = $this->db->insert_id();
+    //     if($query->num_rows() > 0){
+    //       return 1;
+    //     }
+    //     else{
+    //       $this->db->insert('titles', $data); 
+    //       $insert_id = $this->db->insert_id();
 
-//       $subjects = $this->input->post('subjects');
-//       foreach($subjects as $subject){
-//         $title_subject_info = array(
-//           'title_id' => $insert_id,
-//           'subject_id' => $subject
-//         );
-//         $this->db->insert('title_subjects', $title_subject_info);
-//       }
+    //       $subjects = $this->input->post('subjects');
+    //       foreach($subjects as $subject){
+    //         $title_subject_info = array(
+    //           'title_id' => $insert_id,
+    //           'subject_id' => $subject
+    //         );
+    //         $this->db->insert('title_subjects', $title_subject_info);
+    //       }
 
-//       $conditions = $this->input->post('conditions');
-//       $ugids = $this->input->post('ugids');
-//       $i = 0;
-//       foreach($conditions as $condition){
-//         $book_info = array(
-//           'title_id' => $insert_id,
-//           'condition_id' => $condition,
-//           'ug_id' => $ugids[$i]
-//         );
-//         $this->db->insert('books', $book_info);
-//         $i = $i + 1; 
-//       }
-//       return 0;
-//     }
+    //       $conditions = $this->input->post('conditions');
+    //       $ugids = $this->input->post('ugids');
+    //       $i = 0;
+    //       foreach($conditions as $condition){
+    //         $book_info = array(
+    //           'title_id' => $insert_id,
+    //           'condition_id' => $condition,
+    //           'ug_id' => $ugids[$i]
+    //         );
+    //         $this->db->insert('books', $book_info);
+    //         $i = $i + 1; 
+    //       }
+    //       return 0;
+    //     }
   } 
 
   function addTitleView(){

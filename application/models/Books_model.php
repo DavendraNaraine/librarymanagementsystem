@@ -74,20 +74,19 @@ class Books_model extends CI_Model{
 	 	return $q;	
   }
 
-  function searchBook(){
+  function searchBook($book){
     $ug_id = $this->input->post('ugid');
-
     $this->db->select('*');
     $this->db->from('books');
-    $this->db->join('titles', 'books.title_id = titles.title_id');
-    $this->db->where('ug_id', $ug_id);
+     $this->db->join('titles', 'books.title_id = titles.title_id');
+    $this->db->where('books.ug_id', $ug_id);
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
       return $query->result();
     }
     else{
-      return 'Book does not exist';
+      return 'Book cannot be found';
     }
   }
 
