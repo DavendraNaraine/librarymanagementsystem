@@ -65,9 +65,10 @@ class Users_model extends CI_Model{
   }
 
   function listUsers(){
-    $this->db->select('*');
+    $this->db->select('user_id, username, first_name, last_name, role');
     $this->db->from('users');
     $this->db->where('active', 1);
+    $this->db->order_by('users.first_name', 'asc');
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
@@ -154,26 +155,12 @@ class Users_model extends CI_Model{
   }
 
   function deleteUser($user_id){
-    $update = array ('active' => 0);
-
     $data = array(
-      'user_id' =>$user_id,
-      'active' => 1
+      'active' => 0
     );
 
-    $this->db->select('user_id');
-    $this->db->from('users');
-    $this->db->where($data);
-    $query = $this->db->get();
-
-    if($query->num_rows() > 0){
-      $this->db->where('user_id', $user_id);
-      $this->db->update('users', $update);
-      return $user_id;
-    }
-    else{
-      return 'User does not exist';
-    }
+    $q = $this->db->where('users.user_id', $user_id)->update('users', $data);
+	 	return $q;
   }
 
   function loginUser(){
