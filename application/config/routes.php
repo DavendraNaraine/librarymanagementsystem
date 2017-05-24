@@ -22,9 +22,9 @@ $route['v1/books/borrow/(:num)']['post'] = "v1/books/borrow_book/$1";
 
 $route['v1/users/(:num)']['get'] = "v1/users/get_user/$1";
 $route['v1/users']['get'] = "v1/users/list_users";
-$route['v1/users/(:num)']['post'] = "v1/users/update_user/$1";
+$route['v1/users/(:num)']['patch'] = "v1/users/update_user/$1";
 $route['v1/users']['post'] = "v1/users/create_user";
-$route['v1/users/(:num)']['patch'] = "v1/users/delete_user/$1";
+$route['v1/users/(:num)']['delete'] = "v1/users/delete_user/$1";
 $route['v1/users/search']['post'] = "v1/users/search_user_by";
 $route['v1/users/login']['post'] = "v1/users/login";
 $route['v1/users/logout']['post'] = "v1/users/logout";

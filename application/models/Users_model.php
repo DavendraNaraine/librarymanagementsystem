@@ -65,11 +65,9 @@ class Users_model extends CI_Model{
   }
 
   function listUsers(){
-    $active = 1; 
-
-    $this->db->select('username, first_name, last_name, role');
+    $this->db->select('*');
     $this->db->from('users');
-    $this->db->where('active', $active);
+    $this->db->where('active', 1);
     $query = $this->db->get();
 
     if($query->num_rows() > 0){
