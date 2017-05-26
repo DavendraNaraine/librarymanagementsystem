@@ -60,16 +60,16 @@ class Users extends CI_Controller{
   public function login(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->loginUser();
-
+    $user = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->loginUser($user);
     $this->load->view('api/api_view', $data);
+    //$this->output->enable_profiler(TRUE);
   }
 
   public function logout(){
     $this->load->database();
     $this->load->model('users_model');
     $data['response'] = $this->users_model->logoutUser();
-
     $this->load->view('api/api_view', $data);
   }
 }
