@@ -171,7 +171,10 @@ class Users_model extends CI_Model{
 		$q = $this->db->get();
 
 		if($q->num_rows() == 1){
-			$data = array ('session_hash' => $session_hash = bin2hex(openssl_random_pseudo_bytes(16)));
+			$data = array (
+				'session_hash' => $session_hash = bin2hex(openssl_random_pseudo_bytes(16)),
+				'session_expire' => $t = time() + 3600 
+			);
 			$user_id = $q->row("user_id"); 
 			$query = $this->db->where('users.user_id', $user_id)->update('users', $data);
 			return $session_hash;
