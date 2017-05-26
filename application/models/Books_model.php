@@ -26,6 +26,8 @@ class Books_model extends CI_Model{
     $this->db->from('books');
     $this->db->join('titles', 'books.title_id = titles.title_id');
 	$this->db->join('condition', 'books.condition_id = condition.condition_id');
+	$this->db->join('title_subjects', 'books.title_id = title_subjects.title_id');
+	$this->db->join('subjects', 'title_subjects.subject_id = subjects.subject_id');
 	$this->db->where('books.active', 1);
 	$this->db->order_by('titles.title_name', 'asc');
     $query = $this->db->get();
