@@ -69,7 +69,8 @@ class Users extends CI_Controller{
   public function logout(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->logoutUser();
+    $session_hash = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->logoutUser($session_hash);
     $this->load->view('api/api_view', $data);
   }
 }

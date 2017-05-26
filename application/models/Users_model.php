@@ -184,8 +184,42 @@ class Users_model extends CI_Model{
 		}
 	}
 
-	function logoutUser(){
+	function logoutUser($session_hash){
+		$this->db->select('session_hash');
+		$this->db->from('users');
+		$this->db->where('session_hash', $session_hash->session_hash);
 
+		$q = $this->db->get();
+
+		if($q->num_rows() == 1){
+			$data = array (
+				'session_hash' => null,
+				'session_expire' => null
+			);
+			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
+			return 'Logged out';
+		}
+		else{
+			return null; 
+		}
+	}
+
+	function updateSession($session_hash){
+		$this->db->select('session_expire');
+		$this->db->from('users');
+		$this->db->where('session_expire', $session_hash->session_expire);
+
+		$q = $this->db->get();
+		
+		if($q->num_rows() == 1 && $q->row("session_expire") > $t = time){
+			$data = array(
+				$t = time() = 3600; 
+			);
+			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
+		}
+		else{
+			return null; 
+		}
 	}
 }
 ?>
