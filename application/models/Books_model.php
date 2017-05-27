@@ -57,9 +57,19 @@ class Books_model extends CI_Model{
 	}
 
 	function addBook($book){
-		
-		$this->db->insert('books', $book); 
-		return "Book added, hell yeah";
+		$this->db->select('ug_id');
+		$this->db->from('books');
+		$this->db->where('ug_id', $book->ug_id);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() > 0){
+			return "UG id taken";
+		}
+		else{
+			$q = $this->db->insert('books', $book); 
+			return "Book added, hell yeah";
+		}
 	}
 
 	function deleteBook($book_id){
