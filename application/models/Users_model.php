@@ -6,28 +6,9 @@ class Users_model extends CI_Model{
 		parent::__construct();
 	} 
 
+
+
 	function addUser($user){
-		//             $data = array(
-		//                 'username' => $this->input->post('username'),
-		//                 'password' => md5($this->input->post('password')),
-		//                 'first_name' => $this->input->post('firstname'),
-		//                 'last_name' => $this->input->post('lastname'),
-		//                 'student_usi' => $this->input->post('student_usi'),
-		//                 'role' => $this->input->post('role')
-		//             );
-
-		//             $this->db->select('username');
-		//             $this->db->from('users');
-		//             $this->db->where('username', $data['username']);  
-		//             $query = $this->db->get();
-
-		//             if($query->num_rows() > 0){
-		//                 return "Can't add";
-		//             }
-		//             else{
-		//                 $this->db->insert('users', $data);
-		//                 return "User added";
-		//             }
 		$this->db->select('username, student_usi');
 		$this->db->from('users');
 		$this->db->where('username', $user->username);
@@ -43,18 +24,20 @@ class Users_model extends CI_Model{
 			$this->db->set('first_name', $user->first_name);
 			$this->db->set('last_name', $user->last_name);
 			$this->db->set('password', md5($user->password)); 
-			
+
 			if($user->student_usi == null){
-			$this->db->set('student_usi', 0);
+				$this->db->set('student_usi', 0);
 			}
 			else {
 				$this->db->set('student_usi', $user->student_usi);
 			}
 			$this->db->set('role', $user->role);//why is this here?
- 			$this->db->insert('users');
+			$this->db->insert('users');
 			return "User Added";
 		}
 	}
+
+
 
 	function getUser($user_id){
 		$active = 1; 
@@ -75,6 +58,8 @@ class Users_model extends CI_Model{
 		}
 	}
 
+
+
 	function listUsers(){
 		$this->db->select('user_id, username, first_name, last_name, role');
 		$this->db->from('users');
@@ -89,6 +74,8 @@ class Users_model extends CI_Model{
 			return 'Error loading list';
 		}
 	}
+
+
 
 	function searchUser(){
 		$username = null;
@@ -133,45 +120,43 @@ class Users_model extends CI_Model{
 	}
 
 	function updateUser($user_id = NULL, $user = NULL){
-		//     $update = array (
-		//       'username' => $this->input->post('username'),
-		//       'password' => $this->input->post('password'),
-		//       'first_name' => $this->input->post('firstname'),
-		//       'last_name' => $this->input->post('lastname'),
-		//       'student_usi' => $this->input->post('student_usi'),
-		//       'role' => $this->input->post('role')
-		//     );
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('active', 1);
 
-		//     $data = array(
-		//       'user_id' => $user_id,
-		//       'active' => 1
-		//     );
+		$query = $this->db->get();
 
-		//     $this->db->select('user_id');
-		//     $this->db->from('users');
-		//     $this->db->where($data);
-		//     $query = $this->db->get();
-
-		//     if($query->num_rows() == 1){
-		//       $this->db->where('user_id', $user_id);
-		//       $this->db->update('users', $update);
-		//       return $user_id;
-		//     }
-		//     else{
-		//       return 'User cannot be updated';
-		//     }
-		$q = $this->db->where('users.user_id', $user_id)->update('users', $user);
-		return $q;
+		if($query->num_rows() == 1){
+			$q = $this->db->where('users.user_id', $user_id)->update('users', $user);
+			return $q;
+		}
+		else{
+			return "User cannot be updated";
+		}
 	}
 
 	function deleteUser($user_id){
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('active', 1);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() == 1){
 		$data = array(
 			'active' => 0
 		);
-
 		$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
 		return $q;
+		}
+		else{
+			return "User cannot be deleted";
+		}
 	}
+
+
 
 	function loginUser($user){
 		$this->db->select('user_id');
@@ -194,6 +179,8 @@ class Users_model extends CI_Model{
 			return 'Login Failed';
 		}
 	}
+
+
 
 	function logoutUser($session_hash){
 		$this->db->select('session_hash');

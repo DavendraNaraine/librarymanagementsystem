@@ -105,7 +105,6 @@ class Books_model extends CI_Model{
 
 
 
-
 	// 	function searchBook($book){
 	// 		$ug_id = $this->input->post('ugid');
 	// 		$this->db->select('*');
@@ -124,38 +123,36 @@ class Books_model extends CI_Model{
 
 
 
-
 	function borrowBook(){
 
 	}
 
 
 
+// 	function returnBook($borrowed_book_id){
+// 		$update = array(
+// 			'actual_return_date'=> $this->input->post('returnDate'),
+// 			'staff_return_id'=> $this->input->post('staffReturnId'),
+// 			'return_condition_id'=> $this->input->post('condition')
+// 		);
 
-	function returnBook($borrowed_book_id){
-		$update = array(
-			'actual_return_date'=> $this->input->post('returnDate'),
-			'staff_return_id'=> $this->input->post('staffReturnId'),
-			'return_condition_id'=> $this->input->post('condition')
-		);
+// 		$data = array(
+// 			'borrowed_book_id' =>$borrowed_book_id,
+// 		);
 
-		$data = array(
-			'borrowed_book_id' =>$borrowed_book_id,
-		);
+// 		$this->db->select('actual_return_date, staff_return_id, return_condition_id');
+// 		$this->db->from('borrowed_books');
+// 		$this->db->where($data);
+// 		$query = $this->db->get();
 
-		$this->db->select('actual_return_date, staff_return_id, return_condition_id');
-		$this->db->from('borrowed_books');
-		$this->db->where($data);
-		$query = $this->db->get();
-
-		if($query->num_rows() > 0){
-			$this->db->where('borrowed_book_id', $borrowed_book_id);
-			$this->db->update('borrowed_books', $update);
-			return $borrowed_book_id;
-		}
-		else{
-			return 'Invalid update';
-		}
-	}
+// 		if($query->num_rows() > 0){
+// 			$this->db->where('borrowed_book_id', $borrowed_book_id);
+// 			$this->db->update('borrowed_books', $update);
+// 			return $borrowed_book_id;
+// 		}
+// 		else{
+// 			return 'Invalid update';
+// 		}
+// 	}
 }
 ?>
