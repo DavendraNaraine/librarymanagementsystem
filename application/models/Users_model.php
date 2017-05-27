@@ -28,21 +28,22 @@ class Users_model extends CI_Model{
 		//                 $this->db->insert('users', $data);
 		//                 return "User added";
 		//             }
-		$q = $this->db->insert('users', $user);
-		return "User Added";
+		$this->db->select('username, student_usi');
+		$this->db->from('users');
+		$this->db->where('username', $user->username);
+		$this->db->or_where('student_usi', $user->student_usi);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() > 0){
+			return 'Username or USI exist';
+		}
+		else{
+			$q = $this->db->insert('users', $user);
+			return "User Added";
+		}
 	}
 
-	function addUserView(){
-		$add = $this->addUser();
-		if($add==0){
-			//User added successfully, redirect to success page
-			header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user-success");
-		}
-		else {
-			//User add was unsuccessful, reidrect to fail page
-			header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/user-fail");
-		}
-	}
 
 	function getUser($user_id){
 		$active = 1; 
@@ -150,7 +151,6 @@ class Users_model extends CI_Model{
 		//     }
 		$q = $this->db->where('users.user_id', $user_id)->update('users', $user);
 		return $q;
-
 	}
 
 	function deleteUser($user_id){
@@ -204,22 +204,22 @@ class Users_model extends CI_Model{
 		}
 	}
 
-	function updateSession($session_hash){
-		$this->db->select('session_expire');
-		$this->db->from('users');
-		$this->db->where('session_expire', $session_hash->session_expire);
+	// 	function updateSession($session_hash){
+	// 		$this->db->select('session_expire');
+	// 		$this->db->from('users');
+	// 		$this->db->where('session_expire', $session_hash->session_expire);
 
-		$q = $this->db->get();
-		
-		if($q->num_rows() == 1 && $q->row("session_expire") > $t = time){
-			$data = array(
-				$t = time() = 3600; 
-			);
-			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
-		}
-		else{
-			return null; 
-		}
-	}
+	// 		$q = $this->db->get();
+
+	// 		if($q->num_rows() == 1 && $q->row("session_expire") > $t = time){
+	// 			$data = array(
+	// 				$t = time() = 3600; 
+	// 			);
+	// 			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
+	// 		}
+	// 		else{
+	// 			return null; 
+	// 		}
+	// 	}
 }
 ?>
