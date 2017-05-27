@@ -29,6 +29,7 @@ $route['v1/users/search']['post'] = "v1/users/search_user_by";
 $route['v1/users/login']['post'] = "v1/users/login";
 $route['v1/users/logout']['post'] = "v1/users/logout";
 $route['v1/users/session']['post'] = "v1/users/session_update";
+$route['v1/users/getvalues']['post'] = "v1/users/get_vales_from_session_hash";
 
 $route['v1/subjects/(:num)']['get'] = "v1/subjects/get_subject/$1";
 $route['v1/subjects']['get'] = "v1/subjects/list_subjects";

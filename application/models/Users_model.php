@@ -207,13 +207,15 @@ class Users_model extends CI_Model{
 		}
 	}
 
+
+
 	function updateSession($session_hash){
 		$this->db->select('session_expire');
 		$this->db->from('users');
 		$this->db->where('session_hash', $session_hash->session_hash);
 
 		$q = $this->db->get();
-		
+
 		$t = time();
 		if($q->num_rows() == 1 && $q->row("session_expire") > $t){
 			$data = array(
@@ -223,6 +225,23 @@ class Users_model extends CI_Model{
 		}
 		else{
 			return null; 
+		}
+	}
+
+
+
+	function getValuesFromSessionHash($session_hash){
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('session_hash', $session_hash->session_hash);
+
+		$q = $this->db->get();
+
+		if($q->num_rows() == 1){
+			return $user_id = $q->row("user_id");
+		}
+		else{
+			return null;
 		}
 	}
 }

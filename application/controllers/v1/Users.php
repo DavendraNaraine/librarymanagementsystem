@@ -81,5 +81,13 @@ class Users extends CI_Controller{
     $data['response'] = $this->users_model->updateSession($session_hash);
     $this->load->view('api/api_view', $data);
   }
+  
+    public function get_vales_from_session_hash(){
+    $this->load->database();
+    $this->load->model('users_model');
+    $session_hash = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->getValuesFromSessionHash($session_hash);
+    $this->load->view('api/api_view', $data);
+  }
 }
 ?>
