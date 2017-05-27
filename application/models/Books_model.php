@@ -105,54 +105,72 @@ class Books_model extends CI_Model{
 
 
 
-	// 	function searchBook($book){
-	// 		$ug_id = $this->input->post('ugid');
-	// 		$this->db->select('*');
-	// 		$this->db->from('books');
-	// 		$this->db->join('titles', 'books.title_id = titles.title_id');
-	// 		$this->db->where('books.ug_id', $ug_id);
-	// 		$query = $this->db->get();
+	function searchBook($book){
+		$ug_id = $this->input->post('ugid');
+		$this->db->select('*');
+		$this->db->from('books');
+		$this->db->join('titles', 'books.title_id = titles.title_id');
+		$this->db->where('books.ug_id', $ug_id);
 
-	// 		if($query->num_rows() > 0){
-	// 			return $query->result();
-	// 		}
-	// 		else{
-	// 			return 'Book cannot be found';
-	// 		}
-	// 	}
+		$query = $this->db->get();
 
-
-
-	function borrowBook(){
-
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return 'Book cannot be found';
+		}
 	}
 
 
 
-// 	function returnBook($borrowed_book_id){
-// 		$update = array(
-// 			'actual_return_date'=> $this->input->post('returnDate'),
-// 			'staff_return_id'=> $this->input->post('staffReturnId'),
-// 			'return_condition_id'=> $this->input->post('condition')
-// 		);
+	function borrowBook($book){
+		// 		$book->staff_lent_id = $user_info->user_id;
+		// 		var_dump ($book->staff_lent_id);
+		// 		$q = $this->db->insert('books', $book); 
 
-// 		$data = array(
-// 			'borrowed_book_id' =>$borrowed_book_id,
-// 		);
 
-// 		$this->db->select('actual_return_date, staff_return_id, return_condition_id');
-// 		$this->db->from('borrowed_books');
-// 		$this->db->where($data);
-// 		$query = $this->db->get();
+		$this->db->set('book_id', $book->book_id);
+		$this->db->set('student_usi', $book->student_usi);
+		$this->db->set('borrowed_date', date("Y-m-d"));
+		$this->db->set('borrowed_condition_id', $book->borrowed_condition_id);
+		$this->db->set('return_date', $book->return_date);
+		$this->db->set('staff_lent_id',0);
+		$this->db->set('actual_return_date', 0);
+		$this->db->set('staff_lent_id',0);
+		$this->db->set('staff_return_id',0);
+		$this->db->set('return_condition_id', 0);
 
-// 		if($query->num_rows() > 0){
-// 			$this->db->where('borrowed_book_id', $borrowed_book_id);
-// 			$this->db->update('borrowed_books', $update);
-// 			return $borrowed_book_id;
-// 		}
-// 		else{
-// 			return 'Invalid update';
-// 		}
-// 	}
+		$this->db->insert('borrowed_books');
+		return "Book borrowed";
+	}
+
+
+
+	// 	function returnBook($borrowed_book_id){
+	// 		$update = array(
+	// 			'actual_return_date'=> $this->input->post('returnDate'),
+	// 			'staff_return_id'=> $this->input->post('staffReturnId'),
+	// 			'return_condition_id'=> $this->input->post('condition')
+	// 		);
+
+	// 		$data = array(
+	// 			'borrowed_book_id' =>$borrowed_book_id,
+	// 		);
+
+	// 		$this->db->select('actual_return_date, staff_return_id, return_condition_id');
+	// 		$this->db->from('borrowed_books');
+	// 		$this->db->where($data);
+	// 		$query = $this->db->get();
+
+	// 		if($query->num_rows() > 0){
+	// 			$this->db->where('borrowed_book_id', $borrowed_book_id);
+	// 			$this->db->update('borrowed_books', $update);
+	// 			return $borrowed_book_id;
+	// 		}
+	// 		else{
+	// 			return 'Invalid update';
+	// 		}
+	// 	}
 }
 ?>

@@ -231,14 +231,14 @@ class Users_model extends CI_Model{
 
 
 	function getValuesFromSessionHash($session_hash){
-		$this->db->select('user_id');
+		$this->db->select('user_id, username, role');
 		$this->db->from('users');
 		$this->db->where('session_hash', $session_hash->session_hash);
 
 		$q = $this->db->get();
 
 		if($q->num_rows() == 1){
-			return $user_id = $q->row("user_id");
+			return $q->row();
 		}
 		else{
 			return null;
