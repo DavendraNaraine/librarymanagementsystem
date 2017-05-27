@@ -24,7 +24,6 @@ class Subjects extends CI_Controller{
     $this->load->model('subjects_model');
     $subject = json_decode($this->input->raw_input_stream);
 
-
     if(!is_numeric($subject_id) || $subject != NULL) {
       $data['response'] = $this->subjects_model->updateSubject($subject_id, $subject);
       $this->load->view('api/api_view', $data);
