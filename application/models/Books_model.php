@@ -6,6 +6,8 @@ class Books_model extends CI_Model{
 		parent::__construct();
 	}
 
+
+
 	function getBook($book_id){
 		$this->db->select('*');
 		$this->db->from('books');
@@ -20,6 +22,8 @@ class Books_model extends CI_Model{
 			return 'Book does not exist';
 		}
 	}
+
+
 
 	function listBooks(){
 		$this->db->select('*');
@@ -40,10 +44,13 @@ class Books_model extends CI_Model{
 		}
 	}
 
+
+
 	function updateBook($book_id = NULL, $book = NULL){
 		$this->db->select('book_id');
 		$this->db->from('books');
 		$this->db->where('book_id', $book_id);
+		$this->db->where('active', 1);
 
 		$query = $this->db->get();
 
@@ -55,6 +62,8 @@ class Books_model extends CI_Model{
 			return 'Book cannot be updated';
 		}
 	}
+
+
 
 	function addBook($book){
 		$this->db->select('ug_id');
@@ -72,50 +81,56 @@ class Books_model extends CI_Model{
 		}
 	}
 
+
+
 	function deleteBook($book_id){
-		//     $update = array ('active' => 0);
-
-		$data = array(
-			//       'book_id' => $book_id,
-			'active' => 0
-		);
-
-		//     $this->db->select('book_id');
-		//     $this->db->from('books');
-		//     $this->db->where($data); 
-		//     $query = $this->db->get();
-
-		//     if($query->num_rows() > 0){
-		//       $this->db->where('book_id', $book_id);
-		//       $this->db->update('books', $update);
-		//       return $book_id;
-		//     }
-		//     else{
-		//       return 'Book does not exist';
-		//     }
-		$q = $this->db->where('books.book_id', $book_id)->update('books', $data);
-		return $q;	
-	}
-
-	function searchBook($book){
-		$ug_id = $this->input->post('ugid');
-		$this->db->select('*');
+		$this->db->select('book_id');
 		$this->db->from('books');
-		$this->db->join('titles', 'books.title_id = titles.title_id');
-		$this->db->where('books.ug_id', $ug_id);
+		$this->db->where('book_id', $book_id);
+		$this->db->where('active', 1);
+
 		$query = $this->db->get();
 
-		if($query->num_rows() > 0){
-			return $query->result();
+		if($query->num_rows() == 1){
+			$data = array(
+				'active' => 0
+			);
+			$q = $this->db->where('books.book_id', $book_id)->update('books', $data);
+			return $q;			
 		}
 		else{
-			return 'Book cannot be found';
+			return "Book cannot be deleted";
 		}
 	}
+
+
+
+
+	// 	function searchBook($book){
+	// 		$ug_id = $this->input->post('ugid');
+	// 		$this->db->select('*');
+	// 		$this->db->from('books');
+	// 		$this->db->join('titles', 'books.title_id = titles.title_id');
+	// 		$this->db->where('books.ug_id', $ug_id);
+	// 		$query = $this->db->get();
+
+	// 		if($query->num_rows() > 0){
+	// 			return $query->result();
+	// 		}
+	// 		else{
+	// 			return 'Book cannot be found';
+	// 		}
+	// 	}
+
+
+
 
 	function borrowBook(){
 
 	}
+
+
+
 
 	function returnBook($borrowed_book_id){
 		$update = array(
