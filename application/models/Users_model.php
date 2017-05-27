@@ -119,6 +119,8 @@ class Users_model extends CI_Model{
 		}
 	}
 
+
+
 	function updateUser($user_id = NULL, $user = NULL){
 		$this->db->select('user_id');
 		$this->db->from('users');
@@ -136,6 +138,8 @@ class Users_model extends CI_Model{
 		}
 	}
 
+
+
 	function deleteUser($user_id){
 		$this->db->select('user_id');
 		$this->db->from('users');
@@ -145,11 +149,11 @@ class Users_model extends CI_Model{
 		$query = $this->db->get();
 
 		if($query->num_rows() == 1){
-		$data = array(
-			'active' => 0
-		);
-		$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
-		return $q;
+			$data = array(
+				'active' => 0
+			);
+			$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
+			return $q;
 		}
 		else{
 			return "User cannot be deleted";
@@ -163,6 +167,7 @@ class Users_model extends CI_Model{
 		$this->db->from('users');
 		$this->db->where('username', $user->username);
 		$this->db->where('password', md5($user->password));
+		$this->db->where('active', 0);
 
 		$q = $this->db->get();
 
@@ -202,22 +207,23 @@ class Users_model extends CI_Model{
 		}
 	}
 
-	// 	function updateSession($session_hash){
-	// 		$this->db->select('session_expire');
-	// 		$this->db->from('users');
-	// 		$this->db->where('session_expire', $session_hash->session_expire);
+	function updateSession($session_hash){
+		$this->db->select('session_expire');
+		$this->db->from('users');
+		$this->db->where('session_hash', $session_hash->session_hash);
 
-	// 		$q = $this->db->get();
-
-	// 		if($q->num_rows() == 1 && $q->row("session_expire") > $t = time){
-	// 			$data = array(
-	// 				$t = time() = 3600; 
-	// 			);
-	// 			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
-	// 		}
-	// 		else{
-	// 			return null; 
-	// 		}
-	// 	}
+		$q = $this->db->get();
+		
+		$t = time();
+		if($q->num_rows() == 1 && $q->row("session_expire") > $t){
+			$data = array(
+				'session_expire' => $session_expire = $t + 3600
+			);
+			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
+		}
+		else{
+			return null; 
+		}
+	}
 }
 ?>
