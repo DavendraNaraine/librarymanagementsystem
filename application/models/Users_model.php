@@ -39,11 +39,22 @@ class Users_model extends CI_Model{
 			return 'Username or USI exist';
 		}
 		else{
-			$q = $this->db->insert('users', $user);
+			$this->db->set('username', $user->username);
+			$this->db->set('first_name', $user->first_name);
+			$this->db->set('last_name', $user->last_name);
+			$this->db->set('password', md5($user->password)); 
+			
+			if($user->student_usi == null){
+			$this->db->set('student_usi', 0);
+			}
+			else {
+				$this->db->set('student_usi', $user->student_usi);
+			}
+			$this->db->set('role', $user->role);//why is this here?
+ 			$this->db->insert('users');
 			return "User Added";
 		}
 	}
-
 
 	function getUser($user_id){
 		$active = 1; 
