@@ -83,7 +83,7 @@ class Subjects_model extends CI_model{
       return $q;
     }
     else{
-      return "Subject does not exist";
+      return "Subject cannot be updated";
     }
   }
 }
