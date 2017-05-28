@@ -178,30 +178,46 @@ class Books_model extends CI_Model{
 		}
 	}
 
-	// 	function returnBook($borrowed_book_id){
-	// 		$update = array(
-	// 			'actual_return_date'=> $this->input->post('returnDate'),
-	// 			'staff_return_id'=> $this->input->post('staffReturnId'),
-	// 			'return_condition_id'=> $this->input->post('condition')
-	// 		);
+	function returnBook($book){
 
-	// 		$data = array(
-	// 			'borrowed_book_id' =>$borrowed_book_id,
-	// 		);
+		$this->db->set('actual_return_date', date("Y-m-d"));
+		$this->db->set('return_condition_id', $book->return_condition_id);
+		$this->db->where('book_id', $book->book_id); 
+		$this->db->update('borrowed_books');  
+		
+		$this->db->set('status', 1);
+		
+		if ($book->condition_id != $book->return_condition_id){
+			$this->db->set('condition_id',  $book->return_condition_id );	
+		}
+		
+		$this->db->where('book_id', $book->book_id); 
+		$this->db->update('books'); 
+		
+		return "Book returned";
+		// 			$update = array(
+		// 				'actual_return_date'=> $this->input->post('returnDate'),
+		// 				'staff_return_id'=> $this->input->post('staffReturnId'),
+		// 				'return_condition_id'=> $this->input->post('condition')
+		// 			);
 
-	// 		$this->db->select('actual_return_date, staff_return_id, return_condition_id');
-	// 		$this->db->from('borrowed_books');
-	// 		$this->db->where($data);
-	// 		$query = $this->db->get();
+		// 			$data = array(
+		// 				'borrowed_book_id' =>$borrowed_book_id,
+		// 			);
 
-	// 		if($query->num_rows() > 0){
-	// 			$this->db->where('borrowed_book_id', $borrowed_book_id);
-	// 			$this->db->update('borrowed_books', $update);
-	// 			return $borrowed_book_id;
-	// 		}
-	// 		else{
-	// 			return 'Invalid update';
-	// 		}
-	// 	}
+		// 			$this->db->select('actual_return_date, staff_return_id, return_condition_id');
+		// 			$this->db->from('borrowed_books');
+		// 			$this->db->where($data);
+		// 			$query = $this->db->get();
+
+		// 			if($query->num_rows() > 0){
+		// 				$this->db->where('borrowed_book_id', $borrowed_book_id);
+		// 				$this->db->update('borrowed_books', $update);
+		// 				return $borrowed_book_id;
+		// 			}
+		// 			else{
+		// 				return 'Invalid update';
+		// 			}
+	}
 }
 ?>

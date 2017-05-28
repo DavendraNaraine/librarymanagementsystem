@@ -17,7 +17,7 @@ $route['v1/books/(:num)']['patch'] = "v1/books/update_book/$1";
 $route['v1/books']['post'] = "v1/books/create_book";
 $route['v1/books/(:num)']['delete'] = "v1/books/delete_book/$1";
 $route['v1/books/search']['post'] = "v1/books/search_book_by";
-$route['v1/books/return/(:num)']['post'] = "v1/books/return_book/$1";
+$route['v1/books/return/(:num)']['patch'] = "v1/books/return_book/$1";
 $route['v1/books/return']['get'] = "v1/books/list_returnbooks";
 $route['v1/books/borrow']['post'] = "v1/books/borrow_book";
 

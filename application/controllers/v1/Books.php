@@ -91,7 +91,8 @@ class Books extends CI_Controller{
     public function return_book(){
         $this->load->database();
         $this->load->model('books_model');
-        $data['response'] = $this->books_model->returnBook();
+        $book = json_decode($this->input->raw_input_stream);
+        $data['response'] = $this->books_model->returnBook($book);
 
         $this->load->view('api/api_view', $data);
     }
