@@ -60,16 +60,33 @@ class Users extends CI_Controller{
   public function login(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->loginUser();
-
+    $user = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->loginUser($user);
     $this->load->view('api/api_view', $data);
+    //$this->output->enable_profiler(TRUE);
   }
 
   public function logout(){
     $this->load->database();
     $this->load->model('users_model');
-    $data['response'] = $this->users_model->logoutUser();
+    $session_hash = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->logoutUser($session_hash);
+    $this->load->view('api/api_view', $data);
+  }
 
+  public function session_update(){
+    $this->load->database();
+    $this->load->model('users_model');
+    $session_hash = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->updateSession($session_hash);
+    $this->load->view('api/api_view', $data);
+  }
+  
+    public function get_vales_from_session_hash(){
+    $this->load->database();
+    $this->load->model('users_model');
+    $session_hash = json_decode($this->input->raw_input_stream);
+    $data['response'] = $this->users_model->getValuesFromSessionHash($session_hash);
     $this->load->view('api/api_view', $data);
   }
 }

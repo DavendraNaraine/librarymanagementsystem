@@ -30,8 +30,13 @@ class Users_model extends CI_Model{
 			}
 			else {
 				$this->db->set('student_usi', $user->student_usi);
+
 			} 
 			$this->db->set('role', $user->role);
+
+			}
+			$this->db->set('role', $user->role);//why is this here?
+
 			$this->db->insert('users');
 			return "User Added";
 		}
@@ -122,6 +127,7 @@ class Users_model extends CI_Model{
 
 
 	function updateUser($user_id = NULL, $user = NULL){
+
 		$q = $this->db->where('users.user_id', $user_id)->update('users', $user);
 		return $q;
 	}
@@ -133,6 +139,44 @@ class Users_model extends CI_Model{
 
 		$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
 		return $q;
+
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('active', 1);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() == 1){
+			$q = $this->db->where('users.user_id', $user_id)->update('users', $user);
+			return $q;
+		}
+		else{
+			return "User cannot be updated";
+		}
+	}
+
+
+
+	function deleteUser($user_id){
+		$this->db->select('user_id');
+		$this->db->from('users');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('active', 1);
+
+		$query = $this->db->get();
+
+		if($query->num_rows() == 1){
+			$data = array(
+				'active' => 0
+			);
+			$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
+			return $q;
+		}
+		else{
+			return "User cannot be deleted";
+		}
+
 	}
 
 
@@ -142,6 +186,9 @@ class Users_model extends CI_Model{
 		$this->db->from('users');
 		$this->db->where('username', $user->username);
 		$this->db->where('password', md5($user->password));
+
+		$this->db->where('active', 0);
+
 
 		$q = $this->db->get();
 
@@ -183,6 +230,7 @@ class Users_model extends CI_Model{
 
 
 
+
 	// 	function updateSession($session_hash){
 	// 		$this->db->select('session_expire');
 	// 		$this->db->from('users');
@@ -200,5 +248,41 @@ class Users_model extends CI_Model{
 	// 			return null; 
 	// 		}
 	// 	}
+
+	function updateSession($session_hash){
+		$this->db->select('session_expire');
+		$this->db->from('users');
+		$this->db->where('session_hash', $session_hash->session_hash);
+
+		$q = $this->db->get();
+
+		$t = time();
+		if($q->num_rows() == 1 && $q->row("session_expire") > $t){
+			$data = array(
+				'session_expire' => $session_expire = $t + 3600
+			);
+			$query = $this->db->where('session_hash', $session_hash->session_hash)->update('users', $data);
+		}
+		else{
+			return null; 
+		}
+	}
+
+
+
+	function getValuesFromSessionHash($session_hash){
+		$this->db->select('user_id, username, role');
+		$this->db->from('users');
+		$this->db->where('session_hash', $session_hash->session_hash);
+
+		$q = $this->db->get();
+
+		if($q->num_rows() == 1){
+			return $q->row();
+		}
+		else{
+			return null;
+		}
+	}
 }
 ?>
