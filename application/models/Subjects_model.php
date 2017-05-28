@@ -26,20 +26,6 @@ class Subjects_model extends CI_model{
 
 
 
-  function addSubjectView(){
-    $add = $this->addSubject();
-    if($add==0){
-      //Subject added successfully, redirect to success page
-      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/subject-success");
-    }
-    else {
-      //Subject add was unsuccessful, reidrect to fail page
-      header("Location: http://librarymanagementsystem--.codeanyapp.com/librarymanagementsystem/index.php/subject-fail");
-    }
-  }
-
-
-
   function getSubject($subject_id){
     $this->db->select('*');
     $this->db->from('subjects');
@@ -59,6 +45,7 @@ class Subjects_model extends CI_model{
   function listSubjects(){
     $this->db->select('*');
     $this->db->from('subjects');
+    $this->db->order_by('subjects.subject_name', 'asc');
     $query = $this->db->get();
 
     if($query->num_rows() > 0){

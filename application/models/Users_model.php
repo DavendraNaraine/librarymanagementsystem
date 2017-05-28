@@ -34,13 +34,13 @@ class Users_model extends CI_Model{
 			} 
 			$this->db->set('role', $user->role);
 
-			}
-			$this->db->set('role', $user->role);//why is this here?
-
-			$this->db->insert('users');
-			return "User Added";
 		}
+		$this->db->set('role', $user->role);//why is this here?
+
+		$this->db->insert('users');
+		return "User Added";
 	}
+
 
 
 
@@ -66,8 +66,9 @@ class Users_model extends CI_Model{
 
 
 	function listUsers(){
-		$this->db->select('user_id, username, first_name, last_name, role');
+		$this->db->select('users.user_id, users.username, users.first_name, users.last_name, users.role, roles.*');
 		$this->db->from('users');
+		$this->db->join('roles', 'users.role = roles.role_id');
 		$this->db->where('active', 1);
 		$this->db->order_by('users.first_name', 'asc');
 		$query = $this->db->get();
@@ -158,26 +159,26 @@ class Users_model extends CI_Model{
 
 
 
-	function deleteUser($user_id){
-		$this->db->select('user_id');
-		$this->db->from('users');
-		$this->db->where('user_id', $user_id);
-		$this->db->where('active', 1);
+	// 	function deleteUser($user_id){
+	// 		$this->db->select('user_id');
+	// 		$this->db->from('users');
+	// 		$this->db->where('user_id', $user_id);
+	// 		$this->db->where('active', 1);
 
-		$query = $this->db->get();
+	// 		$query = $this->db->get();
 
-		if($query->num_rows() == 1){
-			$data = array(
-				'active' => 0
-			);
-			$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
-			return $q;
-		}
-		else{
-			return "User cannot be deleted";
-		}
+	// 		if($query->num_rows() == 1){
+	// 			$data = array(
+	// 				'active' => 0
+	// 			);
+	// 			$q = $this->db->where('users.user_id', $user_id)->update('users', $data);
+	// 			return $q;
+	// 		}
+	// 		else{
+	// 			return "User cannot be deleted";
+	// 		}
 
-	}
+	// 	}
 
 
 
