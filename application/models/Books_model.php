@@ -166,6 +166,7 @@ class Books_model extends CI_Model{
 		$this->db->join('borrowed_books', 'books.book_id = borrowed_books.book_id');
 		$this->db->where('books.active', 1);
 		$this->db->where('books.status', 0);
+		$this->db->where('borrowed_books.return_condition_id', 0);
 		// 		$this->db->where('borrowed_books.book_id', NULL);
 		$this->db->order_by('titles.title_name', 'asc');
 		$query = $this->db->get();
